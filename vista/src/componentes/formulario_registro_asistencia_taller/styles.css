@@ -1,0 +1,11 @@
+.error-container {
+    border: 2px solid red;
+    background-color: #ffebeb;
+  }
+  .container_registro_asistencia{
+    display: flex;
+    align-items:center;
+  }
+  .input{
+    margin: 10px;
+  }

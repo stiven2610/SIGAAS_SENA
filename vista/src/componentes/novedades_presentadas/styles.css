@@ -1,0 +1,14 @@
+.container-novedades{
+    width: 100%;
+    height: auto;
+}
+.container-titulo{
+    margin-top: 2rem;
+}
+
+.container-boton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

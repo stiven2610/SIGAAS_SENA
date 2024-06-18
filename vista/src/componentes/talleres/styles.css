@@ -1,0 +1,16 @@
+.container_talleres{
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+margin: 2rem;
+}
+.boton_talleres{
+    margin: rem;
+    display: flex;
+}
+.container_icons_taller{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}

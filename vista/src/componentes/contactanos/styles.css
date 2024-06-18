@@ -1,0 +1,23 @@
+.container_contacta{
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+.container-contactanos{
+    width: 40rem;
+    padding: 2rem;
+    margin-bottom: 7rem;
+    border-radius: 15px;
+    box-shadow: 0 0 10px #9beb6e;
+    background: #f8f8f8;
+    text-align: center;
+}
+
+.boton-contactos{
+    background: #39A900;
+    border: none;
+    width: 20%;
+    padding: 10px;
+    margin: 2rem;
+    border-radius: 10px;
+  }

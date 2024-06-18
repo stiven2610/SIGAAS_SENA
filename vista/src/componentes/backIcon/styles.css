@@ -1,0 +1,11 @@
+.btn_volver {
+    display: flex;
+    max-width: 10%;
+    align-items: center;
+    margin: 10px;
+    padding: 8px 16px;
+    border: 1px solid #b1fa3c;
+    border-radius: 4px;
+    background-color: #72f861;
+    cursor: pointer;
+}  

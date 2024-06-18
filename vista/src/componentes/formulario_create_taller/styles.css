@@ -1,0 +1,27 @@
+.container_form_taller {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.titulos {
+    font-weight: bold;
+    font-size: larger;
+    color: #39A900;
+}
+
+.subtitulos {
+    font-weight: bold;
+}
+
+.formulario_taller {
+    min-width: 40%;
+    background: #f8f8f8;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #9beb6e;
+
+}

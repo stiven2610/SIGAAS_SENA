@@ -1,0 +1,27 @@
+.error-container {
+  border: 2px solid red;
+  background-color: #ffebeb;
+}
+
+.container-login {
+  background-image: url("../../../public/images/Imagen de WhatsApp 2024-06-12 a las 17.23.08_48afc43c.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  padding: 2rem;
+  height:700px;
+  display: flex;
+  align-items: center;
+
+}
+
+.form_login {
+  text-align: center;
+  width: 25rem;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 0 10px #9beb6e;
+}
+.error-credenciales {
+  box-shadow: 0 0 10px #e45757;
+}

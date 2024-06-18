@@ -1,0 +1,52 @@
+/* Estilos del modal */
+.modal {
+  display: none; /* Inicialmente oculto */
+  position: fixed; /* Modal posicionado fijo en la pantalla */
+  top: 0; /* Desde la parte superior */
+  left: 0; /* Desde la izquierda */
+  width: 100%; /* Ancho completo */
+  height: 100%; /* Altura completa */
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+  z-index: 1000; /* Z-index alto para estar encima de otros elementos */
+}
+
+/* Mostrar el modal cuando la clase 'show' está presente */
+.modal.show {
+  display: block;
+}
+
+/* Estilos del contenido del modal */
+.modal-content {
+  position: absolute; /* Contenido posicionado absoluto dentro del modal */
+  top: 50%; /* Centrado verticalmente */
+  left: 50%; /* Centrado horizontalmente */
+  transform: translate(-50%, -50%); /* Centrado exacto */
+  background-color: #39A900; /* Color de fondo del modal */
+  padding: 20px; /* Espacio interior */
+  border-radius: 5px; /* Bordes redondeados */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Sombra */
+  width: 400px; /* Ancho fijo del contenido del modal */
+  max-width: 90%; /* Ancho máximo relativo a la ventana */
+}
+
+/* Estilos del botón de cierre */
+.close {
+  position: absolute; /* Botón posicionado absolutamente */
+  top: 10px; /* Desde la parte superior */
+  right: 10px; /* Desde la derecha */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Estilos de los botones dentro del modal */
+button {
+  margin-top: 10px; /* Espacio superior entre botones */
+  padding: 10px; /* Añadido para una mejor apariencia */
+  background-color: #fff; /* Fondo blanco */
+  border: none; /* Sin borde */
+  border-radius: 3px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+button:hover {
+  background-color: #e0e0e0; /* Cambio de color al pasar el cursor */
+}

@@ -1,0 +1,22 @@
+.img-carousel {
+    width: 100%; /* Ajusta el ancho del carrusel según tus necesidades */
+    height: 25rem; /* Permite que la altura se ajuste automáticamente */
+    object-fit: cover; /* Evita la distorsión, ajustando la imagen para cubrir el contenedor */
+    vertical-align: middle; /* Alinea verticalmente las imágenes */
+  }
+  html {
+    box-sizing: border-box; /* O content-box según tus preferencias */
+  }
+
+
+.container-inicio{
+  margin: 3rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #f8f8f8;
+}
+
+  .container-carousel{
+    width: 50em;
+  }

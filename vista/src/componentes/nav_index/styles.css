@@ -1,0 +1,83 @@
+/* styles.css */
+.header-container,
+.container-nav {
+  background-color: #39a900;
+  color: white;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.header-container .logo-container img,
+.container-nav .logo-container img {
+  width: 150px;
+  height: auto;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar-container .navbar-nav .nav-link {
+  color: white;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.navbar-container .navbar-nav .nav-link.active {
+  border-bottom: 2px solid white;
+}
+
+.titulo-inicio h5 {
+  color: white;
+  text-align: center;
+  margin: 0;
+  flex: 1;
+}
+
+.logo-container {
+  background: #ffff;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+
+
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .titulo-inicio h5 {
+    margin-bottom: 10px;
+  }
+
+  .container-link {
+    justify-content: center;
+  }
+
+  .header-container .logo-container img,
+  .container-nav .logo-container img {
+    width: 120px;
+  }
+}

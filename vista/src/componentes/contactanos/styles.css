@@ -1,23 +1,31 @@
-.container_contacta{
+.container-contactanos {
     display: flex;
-    justify-content: center;
-    padding: 2rem;
-}
-.container-contactanos{
-    width: 40rem;
-    padding: 2rem;
-    margin-bottom: 7rem;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #9beb6e;
-    background: #f8f8f8;
-    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4rem;
+    padding: 1rem;
 }
 
-.boton-contactos{
-    background: #39A900;
-    border: none;
-    width: 20%;
-    padding: 10px;
-    margin: 2rem;
-    border-radius: 10px;
-  }
+.container_form-contacto h5 {
+    margin-bottom: 1rem;
+    color: #ffff;
+}
+
+.contacto-foto {
+    width: auto;
+}
+
+.container_form-contacto {
+    width: auto;
+    text-align: center;
+    width: 25rem;
+    padding: 1rem;
+    background: #38a900b2;
+    margin: 1rem;
+}
+
+@media (max-width: 800px) {
+    .login-image {
+        display: none;
+    }
+}

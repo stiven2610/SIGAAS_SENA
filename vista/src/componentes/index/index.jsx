@@ -69,9 +69,9 @@ const Inicio = () => {
       <div className="container-inicio">
         <>
           <div className="row">
-            <div className="col-md-12 text-center">
-              <h3 className="titulos">BIENESTAR AL APRENDIZ</h3>
-              <p className="text-muted">
+            <div className="col-md-12 text-center pt-4">
+            <h3 className="titulos">¿ Qué es Bienestar al Aprendiz ?</h3>
+              <p className=" m-2 text-muted">
                 Es una estrategia institucional para contribuir en la
                 permanencia y el desempeño exitoso de los aprendices de la
                 entidad en su proceso formativo con enfoque territorial y
@@ -100,14 +100,14 @@ const Inicio = () => {
               </Carousel>
             </div>
           </div>
-          <div className="row mt-3 text-center">
+          <div className="container-equipo row mt-3 text-center">
             <h3 className="titulos m-3">Equipo de Bienestar al Aprendiz</h3>
             {equipo.map((item, index) => (
-              <div className="col-md-4 mb-4 aling-items." key={index}>
+              <div className="col-md-3 mb-4 aling-items." key={index}>
                 <div className="border rounded p-2 shadow  d-flex flex-column align-items-center  justify-content-center">
                   <div
                     style={{
-                      width: "250px",
+                      width: "200px",
                       height: "250px",
                       overflow: "hidden",
                     }}
@@ -119,15 +119,13 @@ const Inicio = () => {
                       style={{ width: "100%", height: "auto" }} // Establece el ancho al 100% para que la imagen se ajuste al contenedor
                     />
                   </div>
-                  <h4>{item.nombre_integrante}</h4>
+                  <h6>{item.nombre}  {item.apellido}</h6>
                   <p>{item.cargo}</p>
-                  <p>{item.descripcion}</p>
                 </div>
               </div>
             ))}
           </div>
-
-          <div className="row m-4 text-center">
+          <div className="container-objetivos row m-4 text-center">
             <h3 className="titulos p-3">
               Objetivos Plan de Bienestar al Aprendiz
             </h3>
@@ -145,9 +143,9 @@ const Inicio = () => {
             ))}
           </div>
 
-          <div className="row m-3 mt-4">
+          <div className="container-informacion row m-3 mt-4">
             <h3 className="titulos p-3 text-center w-100">
-              Objetivos Plan de Bienestar al Aprendiz
+             Información bienestar
             </h3>
             {objetivos.map((item, index) => (
               <div className="col-lg-4 col-md-6 " key={index}>

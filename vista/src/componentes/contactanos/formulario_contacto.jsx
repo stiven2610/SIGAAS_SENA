@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Boton from "../botones/Boton";
+import { TextField } from "@mui/material";
 import "./styles.css";
 
 const Formulario_contacto = () => {
@@ -14,8 +15,8 @@ const Formulario_contacto = () => {
 
   const [formulario, setFormulario] = useState(formulario_inicial);
   const [errors, setErrors] = useState({});
-  const  navigate = useNavigate();
-console.log(formulario)
+  const navigate = useNavigate();
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormulario((prevFormulario) => ({
@@ -48,6 +49,7 @@ console.log(formulario)
       [name]: errorMessage,
     }));
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -62,7 +64,9 @@ console.log(formulario)
       if (!res.ok) {
         throw new Error("Error al enviar el formulario");
       } else {
-        alert("Correo enviado pronto tendra respuesta por parte del equipo de bienestar");
+        alert(
+          "Correo enviado pronto tendrá respuesta por parte del equipo de bienestar"
+        );
         navigate("/");
       }
     } catch (error) {
@@ -72,79 +76,83 @@ console.log(formulario)
 
   return (
     <>
-    <div className="container_contacta">
       <div className="container-contactanos">
-        <h3 className="titulos">Contáctanos</h3>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="nombre" className="subtitulos">Nombre Completo</label>
-          <input
-            type="text"
-            id="nombre"
-            name="nombre"
-            placeholder="Ingresa tu nombre completo"
-            value={formulario.nombre}
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            className={`form-control ${errors.nombre && "is-invalid"}`}
-            required
-          />
-          {errors.nombre && (
-            <span className="invalid-feedback">{errors.nombre}</span>
-          )}
-          <label htmlFor="asunto" className="subtitulos">Asunto</label>
-          <input
-            type="text"
-            id="asunto"
-            name="asunto"
-            placeholder="Ingresa el asunto de tu solicitud"
-            value={formulario.asunto}
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            className={`form-control ${errors.asunto && "is-invalid"}`}
-            required
-          />
-          {errors.asunto && (
-            <span className="invalid-feedback">{errors.asunto}</span>
-          )}
-          <label htmlFor="email" className="subtitulos">Correo Electrónico</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formulario.email}
-            placeholder="Ingresa tu correo electronico"
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            className={`form-control ${errors.email && "is-invalid"}`}
-            required
-          />
-          {errors.email && (
-            <span className="invalid-feedback">{errors.email}</span>
-          )}
-          <label htmlFor="mensaje" className="subtitulos">Mensaje</label>
-          <textarea
-            id="mensaje"
-            name="mensaje"
-            placeholder="Ingrese un mensaje describiendo el motivo de su contacto"
-            value={formulario.mensaje}
-            onChange={handleInputChange}
-            onBlur={handleBlur}
-            className={`form-control mb-3 ${errors.mensaje && "is-invalid"}`}
-            required
-          />
-          {errors.mensaje && (
-            <span className="invalid-feedback">{errors.mensaje}</span>
-          )}
+        <div className="contacto-foto">
+          <img src="../../../public/bienestar1.jpg" className="login-image" />
+        </div>
+        <form className="container_form-contacto" onSubmit={handleSubmit}>
+          <h5>Contáctanos</h5>
+          <div className="input">
+            <TextField
+              id="nombre"
+              name="nombre"
+              label="Nombre Completo"
+              variant="outlined"
+              fullWidth
+              value={formulario.nombre}
+              onChange={handleInputChange}
+              onBlur={handleBlur}
+              error={!!errors.nombre}
+              helperText={errors.nombre}
+              required
+            />
+          </div>
+          <div className="input">
+            <TextField
+              id="asunto"
+              name="asunto"
+              label="Asunto"
+              variant="outlined"
+              fullWidth
+              value={formulario.asunto}
+              onChange={handleInputChange}
+              onBlur={handleBlur}
+              error={!!errors.asunto}
+              helperText={errors.asunto}
+              required
+            />
+          </div>
+          <div className="input">
+            <TextField
+              id="email"
+              name="email"
+              label="Correo Electrónico"
+              variant="outlined"
+              fullWidth
+              value={formulario.email}
+              onChange={handleInputChange}
+              onBlur={handleBlur}
+              error={!!errors.email}
+              helperText={errors.email}
+              required
+            />
+          </div>
+          <div className="input">
+            <TextField
+              id="mensaje"
+              name="mensaje"
+              label="Mensaje"
+              variant="outlined"
+              fullWidth
+              multiline
+              rows={5} 
+              value={formulario.mensaje}
+              onChange={handleInputChange}
+              onBlur={handleBlur}
+              error={!!errors.mensaje}
+              helperText={errors.mensaje}
+              required
+            />
+          </div>
           <Boton
             texto="Enviar"
             color="#39A900"
-            texcolor="#f8f8f8#"
+            textcolor="#f8f8f8"
             tamaño="20%"
           />
         </form>
       </div>
-    </div>
-    <Footer/>
+      <Footer />
     </>
   );
 };

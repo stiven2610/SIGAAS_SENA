@@ -1,27 +1,43 @@
 .error-container {
   border: 2px solid red;
-  background-color: #ffebeb;
+  background-color: #d60707;
 }
 
 .container-login {
-  background-image: url("../../../public/images/Imagen de WhatsApp 2024-06-12 a las 17.23.08_48afc43c.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
-  padding: 2rem;
-  height:700px;
+  margin-top: 5rem;
   display: flex;
   align-items: center;
-
+  justify-content: center;
+  background: #f8f8f8;
 }
-
+.container-foto{
+  margin: 2rem;
+}
 .form_login {
   text-align: center;
   width: 25rem;
   padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 0 10px #9beb6e;
+  background: #38a900b2;
+  margin: 2rem;
+
+}
+.form_login h5{
+  margin-bottom: 1.5rem;
+  color: #ffff;
+}
+.form_login label{
+  color: #030303;
+}
+.input{
+width: 100%;
+background: #f8f5f5;
+padding: 0.5rem;
 }
 .error-credenciales {
-  box-shadow: 0 0 10px #e45757;
+  box-shadow: 0 0 30px #e45757;
+}
+@media (max-width: 800px) {
+  .login-image {
+    display: none;
+  }
 }

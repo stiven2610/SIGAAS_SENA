@@ -1,8 +1,8 @@
+import { TextField } from "@mui/material";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Boton from "../botones/Boton";
-import { TextField } from "@mui/material";
 import "./styles.css";
 
 const Formulario_contacto = () => {
@@ -80,7 +80,8 @@ const Formulario_contacto = () => {
         <div className="contacto-foto">
           <img src="../../../public/bienestar1.jpg" className="login-image" />
         </div>
-        <form className="container_form-contacto" onSubmit={handleSubmit}>
+        <div className="container_form-contacto">
+        <form className="contain-contact" onSubmit={handleSubmit}>
           <h5>Contáctanos</h5>
           <div className="input">
             <TextField
@@ -143,16 +144,18 @@ const Formulario_contacto = () => {
               helperText={errors.mensaje}
               required
             />
-          </div>
-          <Boton
+             <Boton
             texto="Enviar"
             color="#39A900"
             textcolor="#f8f8f8"
             tamaño="20%"
           />
+          </div>
+         
         </form>
+        </div>
       </div>
-      <Footer />
+      <Footer/>
     </>
   );
 };

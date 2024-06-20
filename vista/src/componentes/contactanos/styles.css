@@ -1,30 +1,52 @@
 .container-contactanos {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
+    justify-content: center;
+    height: calc(100vh - 300px);
+    background: #e9e7e7;
 }
 
 .container_form-contacto h5 {
     margin-bottom: 1rem;
+    
     color: #ffff;
 }
-
+.contain-contact {
+    width: 70%;
+    text-align: center;
+    padding: 2rem;
+    background: #989998;
+  }
 .contacto-foto {
     width: auto;
+    display: flex;
+    justify-content: end;
 }
 
 .container_form-contacto {
-    width: auto;
+    width: 50%;
     text-align: center;
-    width: 25rem;
-    padding: 1rem;
-    background: #38a900b2;
-    margin: 1rem;
+    display: flex;
+    align-items: center;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
     .login-image {
+        display:none;
+    }
+    .contacto-foto{
         display: none;
+    }
+    .contain-contact{
+        width: 50%;
+    }.container_form-contacto{
+        width: 100%;
+    justify-content: center;
+
+    }
+}
+@media (max-width: 756px) {
+    .contain-contact{
+        width: 80%;
     }
 }

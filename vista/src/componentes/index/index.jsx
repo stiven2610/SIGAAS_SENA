@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import Footer from "../Footer/Footer";

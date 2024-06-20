@@ -1,26 +1,25 @@
-
-
 import { useState } from "react";
-import BackIcon from "../backIcon/BackIcon";
-import Boton from "../botones/Boton";
-import "./styles.css";
 import { useNavigate } from "react-router-dom";
-const Formulario_create_beneficio = () => {
+import { TextField, Button, Container, Typography } from "@mui/material";
+import BackIcon from "../backIcon/BackIcon";
+import "./styles.css";
+
+const FormularioCreateBeneficio = () => {
   const navigate = useNavigate();
   const [beneficio, setBeneficio] = useState({
-    codigo_beneficio: "",
+    nombre_beneficio: "",
     cupos_beneficio: "",
     fecha_inicio_beneficio: "",
     fecha_fin_beneficio: "",
-   // archivo_excel: "",
   });
+
   const [errors, setErrors] = useState({
-    codigo_beneficio: "",
+    nombre_beneficio: "",
     cupos_beneficio: "",
     fecha_inicio_beneficio: "",
     fecha_fin_beneficio: "",
-   // archivo_excel: "",
   });
+
   const [successMessage] = useState("");
 
   const handleSubmit = async (e) => {
@@ -42,175 +41,134 @@ const Formulario_create_beneficio = () => {
           ...errors,
           [fieldWithError]: errorData.message,
         });
-      }else {
+      } else {
         alert("Beneficio creado exitosamente");
-        navigate("/adjudicados")
+        navigate("/adjudicados");
       }
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
-  // Validar mínimo de caracteres
-  if (name === "nombre_beneficio" && value.trim().length < 10) {
-    setErrors({
-      ...errors,
-      [name]: "El nombre del beneficio es muy corto",
-    });
-  } else {
-    setErrors({
-      ...errors,
-      [name]: "", 
-    });
-  }
 
-  // Validar que no sea solo espacios en blanco
-  if (name === "nombre_beneficio" && value.trim() === "") {
-    setErrors({
-      ...errors,
-      [name]: "El nombre del beneficio no puede estar vacío",
-    });
-  }
+    // Validar mínimo de caracteres
+    if (name === "nombre_beneficio" && value.trim().length < 10) {
+      setErrors({
+        ...errors,
+        [name]: "El nombre del beneficio es muy corto",
+      });
+    } else {
+      setErrors({
+        ...errors,
+        [name]: "",
+      });
+    }
 
-  /*if (e.target.files && e.target.files.length > 0) {
-    const selectedFile = e.target.files[0];
-    setBeneficio({
-      ...beneficio,
-      archivo_excel: selectedFile,
-    });
-  }*/
+    // Validar que no sea solo espacios en blanco
+    if (name === "nombre_beneficio" && value.trim() === "") {
+      setErrors({
+        ...errors,
+        [name]: "El nombre del beneficio no puede estar vacío",
+      });
+    }
 
-  setBeneficio({ ...beneficio, [name]: value });
-};
+    setBeneficio({ ...beneficio, [name]: value });
+  };
 
   return (
     <>
-<div className="dividir">
-     
-
-      <div className="container_bene ">
-      
-      <BackIcon/>
-
-
-          <p className="titulos">CREACIÓN DE BENEFICIO</p>
-          <form onSubmit={handleSubmit} encType="multipart/form-data">
-            <label htmlFor="nombre_beneficio" className="subtitulos">
-              Nombre beneficio
-            </label>
-            <input
-          
-              onChange={handleChange}
-              name="nombre_beneficio"
-              type="text"
-              className={`form-control  ${
-                errors.nombre_beneficio ? "is-invalid" : ""
-              }`}
-              id="nombre_beneficio"
-              required
-              value={beneficio.nombre_beneficio}
-            />
-            {errors.nombre_beneficio && (
-              <span className="invalid-feedback">
-                {errors.nombre_beneficio}
-              </span>
-            )}
-            <label htmlFor="cupos_beneficio" className="subtitulos">
-              Ingrese número de cupos
-            </label>
-            <input
-              onChange={handleChange}
-              name="cupos_beneficio"
-              type="number"
-              className={`form-control  ${
-                errors.cupos_beneficio ? "is-invalid" : ""
-              }`}
-              id="numeroCupos"
-              required
-              
-              value={beneficio.cupos_beneficio}
-            />
-            {errors.cupos_beneficio && (
-              <span className="invalid-feedback">{errors.cupos_beneficio}</span>
-            )}
-            <label htmlFor="fecha_inicio_beneficio" className="subtitulos">
-              Fecha inicio
-            </label>
-            <input
-              onChange={handleChange}
-              name="fecha_inicio_beneficio"
-              type="date"
-              className={`form-control  ${
-                errors.fecha_inicio_beneficio ? "is-invalid" : ""
-              }`}
-              id="fechaInicio"
-              required
-              min={new Date().toISOString().split("T")[0]} 
-             value={beneficio.fecha_inicio_beneficio}
-            />
-
-            {errors.fecha_inicio_beneficio && (
-              <span className="invalid-feedback">
-                {errors.fecha_inicio_beneficio}
-              </span>
-            )}
-            <label htmlFor="fecha_fin_beneficio" className="subtitulos">
-              Fecha fin
-            </label>
-            <input
-              onChange={handleChange}
-              name="fecha_fin_beneficio"
-              type="date"
-              min={new Date().toISOString().split("T")[0]}
-              className={`form-control  ${
-                errors.fecha_fin_beneficio ? "is-invalid" : ""
-              }`}
-              id="fechaFin"
-              required
-              value={beneficio.fecha_fin_beneficio}
-            />
-            {errors.fecha_fin_beneficio && (
-              <span className="invalid-feedback">
-                {errors.fecha_fin_beneficio}
-              </span>
-            )}
-          {/* <label htmlFor="archivo_excel" className="subtitulos">
-              Ruta del archivo de registro de adjudicados
-            </label>
-            <input
-              onChange={handleChange}
-              name="archivo_excel"
-              type="file"
-              className={`form-control  mb-3 ${
-                errors.archivo_excel ? "is-invalid" : ""
-              }`}
-              id="archivo_excel"
-              required
-              value={beneficio.archivo_excel}
-            />
-            {errors.archivo_excel && (
-              <span className="invalid-feedback">{errors.archivo_excel}</span>
-            )}*/}
-            <Boton
-              texto="Crear"
-              tamaño="30%"
-              color="#41be07"
-              textcolor="#fefefe"
-            />
-            {successMessage && (
-              <div className="text-success">{successMessage}</div>
-            )}
-          </form>
-      </div>
-      <div className="container_insert w-50 vh-100">
-      </div>
+      <div className="dividir">
+        <div className="container_beneficio">
+         
+          <div className="form_beneficio">
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
+            <BackIcon />
+            <Typography>CREACIÓN DE BENEFICIO</Typography>
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Nombre beneficio"
+                name="nombre_beneficio"
+                variant="outlined"
+                required
+                value={beneficio.nombre_beneficio}
+                onChange={handleChange}
+                error={!!errors.nombre_beneficio}
+                helperText={errors.nombre_beneficio}
+              />
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Ingrese número de cupos"
+                name="cupos_beneficio"
+                type="number"
+                variant="outlined"
+                required
+                value={beneficio.cupos_beneficio}
+                onChange={handleChange}
+                error={!!errors.cupos_beneficio}
+                helperText={errors.cupos_beneficio}
+              />
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Fecha inicio"
+                name="fecha_inicio_beneficio"
+                type="date"
+                InputLabelProps={{ shrink: true }}
+                variant="outlined"
+                required
+                value={beneficio.fecha_inicio_beneficio}
+                onChange={handleChange}
+                error={!!errors.fecha_inicio_beneficio}
+                helperText={errors.fecha_inicio_beneficio}
+                inputProps={{
+                  min: new Date().toISOString().split("T")[0],
+                }}
+              />
+              <TextField
+                fullWidth
+                margin="normal"
+                label="Fecha fin"
+                name="fecha_fin_beneficio"
+                type="date"
+                InputLabelProps={{ shrink: true }}
+                variant="outlined"
+                required
+                value={beneficio.fecha_fin_beneficio}
+                onChange={handleChange}
+                error={!!errors.fecha_fin_beneficio}
+                helperText={errors.fecha_fin_beneficio}
+                inputProps={{
+                  min: new Date().toISOString().split("T")[0],
+                }}
+              />
+              <Button
+                variant="contained"
+                type="submit"
+                sx={{ mt: 3, bgcolor: "#41be07", color: "#fefefe" }}
+              >
+                Crear
+              </Button>
+              {successMessage && (
+                <Typography variant="body2" color="success">
+                  {successMessage}
+                </Typography>
+              )}
+            </form>
+          </div>
+        </div>
+        <div className="contain-foto">
+          <img
+            src="../../../public/images/Foto - Google Fotos_files/IMG_20240517_105802748_AE.jpg"
+            alt=""
+          />
+        </div>
       </div>
     </>
   );
 };
 
-export default Formulario_create_beneficio;
+export default FormularioCreateBeneficio;

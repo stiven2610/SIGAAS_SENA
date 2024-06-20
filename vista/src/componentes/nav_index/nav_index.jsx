@@ -18,21 +18,15 @@ const Nav_index = () => {
               src="../../../public/images/logobienestar.png"
               alt="logo del Sena"
             />
+            <h3 className="m-2">SIGAAS</h3>
           </div>
+          <div className="titulo-inicio"></div>
           <div className="navbar-container align-items-center ">
-            <Navbar expand="lg">
+            <Navbar expand="lg" className="justify-content-center">
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="">
-                  <Nav.Link
-                    as={NavLink}
-                    to="/creacionbeneficio"
-                    className={({ isActive }) =>
-                      isActive ? "link-nav active" : "link-nav"
-                    }
-                  >
-                    Creación de beneficio
-                  </Nav.Link>
+                <Nav className="mx-auto">
+                  
                   <Nav.Link
                     as={NavLink}
                     to="/adjudicados"
@@ -89,7 +83,7 @@ const Nav_index = () => {
               isActive ? "link-nav active" : "link-nav"
             }
           >
-            <MessageIcon />
+            <MessageIcon className="m-4" />
           </Nav.Link>
           <LongMenu />
         </div>
@@ -104,7 +98,9 @@ const Nav_index = () => {
 
           <div className="navbar-container">
             <div className="titulo-inicio">
-              <h5>Sistema de Gestión de Aprendices en Apoyo de sostenimiento</h5>
+              <h5>
+                Sistema de Gestión de Aprendices en Apoyo de sostenimiento
+              </h5>
             </div>
 
             <div className="container-link">

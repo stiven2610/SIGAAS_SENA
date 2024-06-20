@@ -35,7 +35,11 @@
 .navbar-container .navbar-nav .nav-link.active {
   border-bottom: 2px solid white;
 }
-
+.nav-var{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .titulo-inicio h5 {
   color: white;
   text-align: center;
@@ -45,6 +49,7 @@
 
 .logo-container {
   background: #ffff;
+  color: #39a900;
   margin: 10px;
   padding: 10px;
   border-radius: 10px;

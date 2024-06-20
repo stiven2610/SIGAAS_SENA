@@ -10,8 +10,8 @@ import { AuthContext } from '../AppRoutes/Authcontext';
 const options = [
   'Cancelados',
   'Parametros',
-  'Cerrar sesión'
-
+  'Cerrar sesión',
+'Nuevo beneficio'
 ];
 
 const ITEM_HEIGHT = 48;
@@ -40,7 +40,9 @@ navigate("/cancelados")
         navigate("/equipo")
             }else if (option === 'Información' ){
                 navigate("/informacion")
-                    }
+                    }else if (option === 'Nuevo beneficio' ){
+                      navigate("/creacionbeneficio")
+                          }
   };
 
   return (

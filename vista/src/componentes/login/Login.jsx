@@ -3,17 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AppRoutes/Authcontext";
 import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import FormControl from "@mui/material/FormControl";
 import Footer from "../Footer/Footer";
 import Boton from "../botones/Boton";
 import CryptoJS from "crypto-js";
 import "./styles.css";
-import FormControl from "@mui/material/FormControl";
-const password = "261005";
-const encryptedPassword = CryptoJS.MD5(password).toString();
-console.log(encryptedPassword);
-console.log(encryptedPassword);
+import { MenuItem } from "@mui/material";
+
 const Login = () => {
   const [errorCredenciales, setErrorCredenciales] = useState("");
   const { login } = useContext(AuthContext);
@@ -28,16 +25,15 @@ const Login = () => {
     rol: "",
     contrasenha_usuario: "",
   });
-  console.log(user);
+console.log(user)
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUser({ ...user, [name]: name === "rol" ? value === "true" : value });
+    setUser({ ...user, [name]: value });
   };
 
   const onlogin = async (e) => {
     e.preventDefault();
 
-    // Cifrar la contraseña con CryptoJS MD5
     const userWithEncryptedPassword = {
       ...user,
       contrasenha_usuario: CryptoJS.MD5(user.contrasenha_usuario).toString(),
@@ -51,18 +47,14 @@ const Login = () => {
         },
         body: JSON.stringify(userWithEncryptedPassword),
       });
-
+console.log(userWithEncryptedPassword)
       if (res.ok) {
         const data = await res.json();
         if (data.success) {
-          // Guardar datos en localStorage
           localStorage.setItem("token", data.token);
-          localStorage.setItem(
-            "numero_documento_usuario",
-            user.numero_documento_usuario
-          );
+          localStorage.setItem("numero_documento_usuario", user.numero_documento_usuario);
           login();
-          navigate(data.rol ? "/registronovedad" : "/adjudicados");
+          navigate(user.rol ? "/adjudicados" : "/registronovedad");
         } else {
           setErrorCredenciales("Credenciales incorrectas");
         }
@@ -76,17 +68,12 @@ const Login = () => {
 
   return (
     <>
-      <div className="container-login ">
+      <div className="container-login">
         <div className="container-foto">
-          <img src="../../../public/bienestar1.jpg" className="login-image" />
+          <img src="../../../public/bienestar1.jpg" className="login-image" alt="Login" />
         </div>
         <div className="form-login">
-          <div
-            id="form-container"
-            className={`form_login ${
-              errorCredenciales ? "error-credenciales" : ""
-            }`}
-          >
+          <div id="form-container" className={`form_login ${errorCredenciales ? "error-credenciales" : ""}`}>
             <form onSubmit={onlogin} method="POST">
               <h5>Iniciar Sesión</h5>
               <div className="input">
@@ -96,9 +83,8 @@ const Login = () => {
                   label="Número de documento"
                   onChange={handleChange}
                   onFocus={limpiarCampos}
-                  name="contrasenha_usuario"
+                  name="numero_documento_usuario"
                   className="input"
-                  type="password"
                   maxLength="10"
                   autoComplete="current-password"
                 />
@@ -110,8 +96,10 @@ const Login = () => {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     required
+                    name="rol"
                     onChange={handleChange}
                     onFocus={limpiarCampos}
+                    value={user.rol}
                   >
                     <MenuItem value="true">Instructor</MenuItem>
                     <MenuItem value="false">Administrador</MenuItem>
@@ -131,12 +119,11 @@ const Login = () => {
                   maxLength="10"
                   autoComplete="current-password"
                 />
-                <Boton texto="Ingresar" textcolor="#ffffff" color="#098605" />
               </div>
+              <Boton texto="Ingresar" textcolor="#ffffff" color="#098605" />
               {errorCredenciales && (
                 <p style={{ color: "red" }}>{errorCredenciales}</p>
               )}
-              
             </form>
           </div>
         </div>

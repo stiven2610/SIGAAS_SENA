@@ -1,13 +1,28 @@
-
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Boton from "../botones/Boton";
+import "./styles.css";
 import Registro_cancelados from "../registro_cancelados/Registro_cancelados";
 import Update_aprendiz from "../update_aprendiz/update_aprendiz";
-import "./styles.css";
-import { IconButton, Tooltip } from "@mui/material";
-import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
-import Edit from "@mui/icons-material/Edit";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  IconButton,
+  Tooltip,
+  Typography,
+  TextField,
+  Box,
+  Button,
+} from "@mui/material";
+import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
+import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 const Tabla_adjudicados = () => {
   const navigate = useNavigate();
   const [datosNovedad, setDatosNovedad] = useState(null);
@@ -49,6 +64,7 @@ const Tabla_adjudicados = () => {
       formularioRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [mostrarCancelar]);
+
   const handleBusquedaChange = (e) => {
     setFiltroBusqueda(e.target.value);
   };
@@ -57,20 +73,22 @@ const Tabla_adjudicados = () => {
     setAprendizSeleccionado(aprendiz);
     setMostrarFormulario(true);
   };
+
   const handleOpenForm = (aprendiz) => {
     setDatosNovedad(aprendiz);
     setMostrarCancelar(true);
   };
-  
 
   const handleCloseForm = () => {
     setMostrarFormulario(false);
     setAprendizSeleccionado(null);
   };
+
   const handleCloseFormNovedad = () => {
     setMostrarCancelar(false);
     setAprendizSeleccionado(null);
   };
+
   const filteredDatos = datos.filter((item) => {
     return (
       item.nombre_completo_aprendiz
@@ -82,157 +100,157 @@ const Tabla_adjudicados = () => {
 
   return (
     <>
-      <div className="container_adjudicados">
-        <p className="titulos mt-4">APRENDICES ADJUDICADOS</p>
-        <div className="container_filtros">
-          <label htmlFor="busqueda" className="subtitulos">
-            Buscar Aprendiz:
-          </label>
-          <input
-            type="text"
-            id="busqueda"
-            className="form-control m-1"
-            value={filtroBusqueda}
-            onChange={handleBusquedaChange}
-          />
-          <div onClick={() => navigate("/insertaprendiz")}>
-            <Boton texto="Agregar" color="#39A900" textcolor="#ffffff" />
+    <div className="container_adjudicados text-center">
+      <div className="container_adjudicados_table text-center">
+        <div className="container-busqueda">
+          
+          <div className="busqueda">
+            <TextField
+              id="busqueda"
+              label="Buscar Aprendiz"
+              variant="outlined"
+              size="small"
+              fullWidth
+              value={filtroBusqueda}
+              onChange={handleBusquedaChange}
+              sx={{ mr: 2 }}
+            />
+          </div>
+        <h4 className="titulos">APRENDICES ADJUDICADOS</h4>
+
+          <div className="add">
+            <Tooltip title="Adjudicar un aprendiz">
+              <Button variant="contained" endIcon={<AddBoxIcon />}>
+                Nuevo
+              </Button>
+            </Tooltip>
           </div>
         </div>
         <div className="adjudicados">
-          <table className="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>GESTIONAR</th>
-                <th>Nombre Completo del Aprendiz</th>
-                <th>Tipo de Documento</th>
-                <th>Número de Documento</th>
-                <th>Estado de Aprendiz</th>
-                <th>Obligación Mensual</th>
-                <th>Código de Ficha</th>
-                <th>Nombre Programa</th>
-                <th>Nombre Beneficio</th>
-                <th>Modalidad</th>
-                <th>Teléfono Fijo</th>
-                <th>Teléfono Móvil</th>
-                <th>Dirección de Residencia del Aprendiz</th>
-                <th>Correo Electrónico del Aprendiz</th>
-                <th>Fecha de Adjudicación</th>
-                <th>fecha inicio de ficha</th>
-                <th>Fecha fin lectiva</th>
-                <th>Fecha inicio productiva</th>
-                <th>Fecha fin ficha</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cargando ? (
-                <tr>
-                  <td colSpan="15">Cargando datos...</td>
-                </tr>
-              ) : (
-                filteredDatos.map((item) => (
-                  <tr key={item.numero_documento_aprendiz}>
-                    <td>
-                      <div
-                        className="iconos_gestion d-flex flex-column align-items-center "
-                        onClick={() => handleEditarClick(item)}
-                      >
-                        <Tooltip title="Actualizar datos">
-                          <IconButton >
-                            <Edit />
-                          </IconButton>
-                        </Tooltip>
-                      </div>
-                      <div
-                        className="iconos_gestion d-flex flex-column align-items-center "
-                        onClick={() => handleOpenForm(item)}
-                      >
-                        <Tooltip title="Suspender o cancelar">
-                          <IconButton >
-                            <ArrowCircleDownIcon />
-                          </IconButton>
-                        </Tooltip>
-                      </div>
-                    </td>
-                    <td>{item.nombre_completo_aprendiz}</td>
-                    <td>{item.nombre_documento}</td>
-                    <td>{item.numero_documento_aprendiz}</td>
-                    <td>{item.nombre_estado_aprendiz}</td>
-                    <td>{item.nombre_obligacion_mensual}</td>
-                    <td>{item.codigo_ficha}</td>
-                    <td>{item.nombre_programa}</td>
-                    <td>{item.nombre_beneficio}</td>     
-                    <td>{item.nombre_modalidad}</td>
-                    <td>{item.numero_telefono_fijo}</td>
-                    <td>{item.numero_telefono_movil}</td>
-                    <td>{item.direccion_residencia_aprendiz}</td>
-                    <td>{item.email_aprendiz}</td>
-                    <td>
-                      {new Date(item.fecha_adjudicacion).toLocaleDateString(
-                        "es-ES",
-                        {
+          <TableContainer component={Paper}>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>GESTIONAR</TableCell>
+                  <TableCell>Nombre Completo del Aprendiz</TableCell>
+                  <TableCell>Tipo de Documento</TableCell>
+                  <TableCell>Número de Documento</TableCell>
+                  <TableCell>Estado de Aprendiz</TableCell>
+                  <TableCell>Obligación Mensual</TableCell>
+                  <TableCell>Código de Ficha</TableCell>
+                  <TableCell>Nombre Programa</TableCell>
+                  <TableCell>Nombre Beneficio</TableCell>
+                  <TableCell>Modalidad</TableCell>
+                  <TableCell>Teléfono Fijo</TableCell>
+                  <TableCell>Teléfono Móvil</TableCell>
+                  <TableCell>Dirección de Residencia del Aprendiz</TableCell>
+                  <TableCell>Correo Electrónico del Aprendiz</TableCell>
+                  <TableCell>Fecha de Adjudicación</TableCell>
+                  <TableCell>Fecha inicio de ficha</TableCell>
+                  <TableCell>Fecha fin lectiva</TableCell>
+                  <TableCell>Fecha inicio productiva</TableCell>
+                  <TableCell>Fecha fin ficha</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {cargando ? (
+                  <TableRow>
+                    <TableCell colSpan={18}>Cargando datos...</TableCell>
+                  </TableRow>
+                ) : (
+                  filteredDatos.map((item) => (
+                    <TableRow key={item.numero_documento_aprendiz}>
+                      <TableCell>
+                        <div className="iconos_gestion d-flex flex-column align-items-center">
+                          <Tooltip title="Actualizar datos">
+                            <IconButton onClick={() => handleEditarClick(item)}>
+                              <EditIcon />
+                            </IconButton>
+                          </Tooltip>
+                          <Tooltip title="Suspender o cancelar">
+                            <IconButton onClick={() => handleOpenForm(item)}>
+                              <ArrowCircleDownIcon />
+                            </IconButton>
+                          </Tooltip>
+                        </div>
+                      </TableCell>
+                      <TableCell>{item.nombre_completo_aprendiz}</TableCell>
+                      <TableCell>{item.nombre_documento}</TableCell>
+                      <TableCell>{item.numero_documento_aprendiz}</TableCell>
+                      <TableCell>{item.nombre_estado_aprendiz}</TableCell>
+                      <TableCell>{item.nombre_obligacion_mensual}</TableCell>
+                      <TableCell>{item.codigo_ficha}</TableCell>
+                      <TableCell>{item.nombre_programa}</TableCell>
+                      <TableCell>{item.nombre_beneficio}</TableCell>
+                      <TableCell>{item.nombre_modalidad}</TableCell>
+                      <TableCell>{item.numero_telefono_fijo}</TableCell>
+                      <TableCell>{item.numero_telefono_movil}</TableCell>
+                      <TableCell>
+                        {item.direccion_residencia_aprendiz}
+                      </TableCell>
+                      <TableCell>{item.email_aprendiz}</TableCell>
+                      <TableCell>
+                        {new Date(item.fecha_adjudicacion).toLocaleDateString(
+                          "es-ES",
+                          {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                          }
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        {new Date(item.fecha_inicio_ficha).toLocaleDateString(
+                          "es-ES",
+                          {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                          }
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        {new Date(item.fecha_fin_lectiva).toLocaleDateString(
+                          "es-ES",
+                          {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                          }
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        {new Date(
+                          item.fecha_inicio_etapa_productiva
+                        ).toLocaleDateString("es-ES", {
                           day: "2-digit",
                           month: "2-digit",
                           year: "numeric",
-                        }
-                      )}
-                    </td>
-                    <td>
-                      {new Date(item.fecha_inicio_ficha).toLocaleDateString(
-                        "es-ES",
-                        {
-                          day: "2-digit",
-                          month: "2-digit",
-                          year: "numeric",
-                        }
-                      )}
-                    </td>
-                    <td>
-                      {new Date(item.fecha_fin_lectiva).toLocaleDateString(
-                        "es-ES",
-                        {
-                          day: "2-digit",
-                          month: "2-digit",
-                          year: "numeric",
-                        }
-                      )}
-                    </td>
-                    <td>
-                      {new Date(item.fecha_inicio_etapa_productiva).toLocaleDateString(
-                        "es-ES",
-                        {
-                          day: "2-digit",
-                          month: "2-digit",
-                          year: "numeric",
-                        }
-                      )}
-                    </td>
-                    <td>
-                      {new Date(item.fecha_fin_ficha).toLocaleDateString(
-                        "es-ES",
-                        {
-                          day: "2-digit",
-                          month: "2-digit",
-                          year: "numeric",
-                        }
-                      )}
-                    </td>
-                  </tr>
-                ))
-              )}
-            </tbody>
-          </table>
+                        })}
+                      </TableCell>
+                      <TableCell>
+                        {new Date(item.fecha_fin_ficha).toLocaleDateString(
+                          "es-ES",
+                          {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                          }
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
           {mostrarFormulario && aprendizSeleccionado && (
             <div ref={formularioRef} className="container_edicion">
-              <div>
-
               <Update_aprendiz
                 aprendiz={aprendizSeleccionado}
                 id_tipo_documento={aprendizSeleccionado.id_tipo_documento}
                 id_estado_aprendiz={aprendizSeleccionado.id_estado_aprendiz}
               />
-              </div>
-
               <div onClick={handleCloseForm}>
                 <Boton texto="Cancelar" textcolor="#fffff" color="#fa4711" />
               </div>
@@ -240,19 +258,15 @@ const Tabla_adjudicados = () => {
           )}
           {mostrarCancelar && datosNovedad && (
             <div ref={formularioRef} className="container_edicion">
-              <div>
-
               {datosNovedad && datosNovedad.nombre_completo_aprendiz && (
-  
                 <Registro_cancelados datosNovedad={datosNovedad} />
               )}
-              </div>
-
               <div onClick={handleCloseFormNovedad}>
                 <Boton texto="Cancelar" textcolor="#ffffff" color="#fa4711" />
               </div>
             </div>
           )}
+        </div>
         </div>
       </div>
     </>

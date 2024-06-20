@@ -1,14 +1,14 @@
 
-import React, { useState, useEffect } from "react";
-import Grid from "@mui/material/Grid";
 import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  FormHelperText,
+    FormControl,
+    FormHelperText,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
 } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import React, { useEffect, useState } from "react";
 
 const Datos_beneficio = ({ handleChange, errors }) => {
   const [datos, setDatos] = useState([]);

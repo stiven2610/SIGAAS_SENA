@@ -1,9 +1,9 @@
+import MessageIcon from "@mui/icons-material/Message";
 import { useContext } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { NavLink, Outlet } from "react-router-dom";
 import { AuthContext } from "../AppRoutes/Authcontext";
 import LongMenu from "../material/menu";
-import MessageIcon from "@mui/icons-material/Message";
 import "./styles.css";
 
 const Nav_index = () => {

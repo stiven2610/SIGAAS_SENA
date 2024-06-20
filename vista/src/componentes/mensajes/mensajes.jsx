@@ -8,7 +8,7 @@ const Mensajes = () => {
 
   useEffect(() => {
     setCargando(true);
-    fetch("http://localhost:4000/get_mensajes")
+    fetch("http://  localhost:4000/get_mensajes")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {
@@ -29,7 +29,7 @@ const Mensajes = () => {
     <>
       <div className="container_insert vh-100">
         <div className="table-container">
-          <h4 className="titulos">Mensajes</h4>
+          <h4 className="titulos text-center">Mensajes</h4>
           <BackIcon />
           <div className="table-responsive">
             <table className="table table-bordered table-striped">

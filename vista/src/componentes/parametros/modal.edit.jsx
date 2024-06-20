@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-import Fade from '@mui/material/Fade';
-import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import React, { useEffect, useState } from 'react';
 
 const style = {
   position: 'absolute',
@@ -49,7 +49,7 @@ console.log(datos)
     }
 
     // Ejemplo de cómo enviar los datos a un servidor (ajusta según tu necesidad)
-    fetch('http://localhost:4000/update_persona', {
+    fetch('http://  localhost:4000/update_persona', {
       method: 'POST',
       body: formData,
     })

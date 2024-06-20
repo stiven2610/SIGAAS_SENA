@@ -1,8 +1,8 @@
 
-import { useEffect, useState } from "react";
-import BackIcon from "../backIcon/BackIcon";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { IconButton, Tooltip } from "@mui/material";
+import { useEffect, useState } from "react";
+import BackIcon from "../backIcon/BackIcon";
 
 const Suspendidos = () => {
   const [datos, setDatos] = useState([]);
@@ -10,7 +10,7 @@ const Suspendidos = () => {
 
   const fetchSuspendidos = () => {
     setCargando(true);
-    fetch("http://localhost:4000/get_suspendidos")
+    fetch("http://  localhost:4000/get_suspendidos")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {
@@ -34,7 +34,7 @@ const Suspendidos = () => {
       return; // Si el usuario cancela, no hacemos nada
     }
    
-    fetch(`http://localhost:4000/reactivaraprendiz/${numero_documento_aprendiz}`, {
+    fetch(`http://  localhost:4000/reactivaraprendiz/${numero_documento_aprendiz}`, {
       method: 'PUT', // Usa PUT o POST según el diseño de tu API
       headers: {
         'Content-Type': 'application/json',

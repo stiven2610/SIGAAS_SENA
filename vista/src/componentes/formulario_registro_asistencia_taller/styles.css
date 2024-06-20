@@ -4,7 +4,6 @@
   }
   .container_registro_asistencia{
     display: flex;
-    align-items:center;
   }
   .input{
     margin: 10px;

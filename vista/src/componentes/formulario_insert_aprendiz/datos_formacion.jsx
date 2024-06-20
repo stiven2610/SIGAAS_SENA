@@ -1,15 +1,14 @@
 
-import React, { useState } from "react";
-import Grid from "@mui/material/Grid";
 import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  FormHelperText,
-  Button,
+    FormControl,
+    FormHelperText,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField
 } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import React, { useState } from "react";
 import { validateField } from "../validaciones/validaciones";
 
 const Datos_formacion = ({ handleChange, errors }) => {
@@ -29,7 +28,7 @@ const Datos_formacion = ({ handleChange, errors }) => {
   const handleCodigoFichaBlur = () => {
     const codigo_ficha = formData.codigo_ficha;
 
-    fetch(`http://localhost:4000/get_ficha/${codigo_ficha}`)
+    fetch(`http://  localhost:4000/get_ficha/${codigo_ficha}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error al obtener los datos");

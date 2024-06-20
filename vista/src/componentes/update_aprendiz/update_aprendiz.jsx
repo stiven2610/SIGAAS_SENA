@@ -1,11 +1,11 @@
 
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BackIcon from "../backIcon/BackIcon";
 import Boton from "../botones/Boton";
-import PropTypes from "prop-types";
 import { validateField } from "../validaciones/validaciones";
 import "./styles.css";
-import BackIcon from "../backIcon/BackIcon";
 
 const Update_aprendiz = ({ aprendiz }) => {
   const [estados, set_estados] = useState();
@@ -77,7 +77,7 @@ const Update_aprendiz = ({ aprendiz }) => {
     }
 
     try {
-      const res = await fetch("http://localhost:4000/actualizardatos", {
+      const res = await fetch("http://  localhost:4000/actualizardatos", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -88,7 +88,7 @@ const Update_aprendiz = ({ aprendiz }) => {
         throw new Error("Error al enviar el formulario");
       } else {
         alert("Datos del aprendiz actualizados correctamente");
-        navigate("/novedades");
+        navigate("  /novedades");
       }
     } catch (error) {
       console.log("Error:", error);
@@ -96,7 +96,7 @@ const Update_aprendiz = ({ aprendiz }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:4000/get_documentos")
+    fetch("http://  localhost:4000/get_documentos")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {
@@ -111,7 +111,7 @@ const Update_aprendiz = ({ aprendiz }) => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:4000/get_estados")
+    fetch("http://  localhost:4000/get_estados")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {

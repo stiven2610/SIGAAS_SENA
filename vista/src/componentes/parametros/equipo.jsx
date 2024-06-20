@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import Footer from "../Footer/Footer";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { useEffect, useState } from "react";
+import Footer from "../Footer/Footer";
 import Modal_update from "./modal.edit";
 
 const Inicio = () => {
@@ -10,7 +10,7 @@ const Inicio = () => {
   const [showModal, setShowModal] = useState(false); // Estado para controlar la visibilidad del modal
 
   useEffect(() => {
-    fetch("http://localhost:4000/get_equipo")
+    fetch("http://  localhost:4000/get_equipo")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {
@@ -59,7 +59,7 @@ const Inicio = () => {
                     }}
                   >
                     <img
-                      src={"http://localhost:4000/" + item.ruta_foto}
+                      src={"http://  localhost:4000/" + item.ruta_foto}
                       alt="Persona 1"
                       className="img-fluid"
                       style={{ width: "100%", height: "auto" }} // Establece el ancho al 100% para que la imagen se ajuste al contenedor

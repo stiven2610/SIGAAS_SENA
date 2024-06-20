@@ -1,15 +1,15 @@
+import { MenuItem } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+import CryptoJS from "crypto-js";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../AppRoutes/Authcontext";
-import TextField from "@mui/material/TextField";
-import InputLabel from "@mui/material/InputLabel";
-import Select from "@mui/material/Select";
-import FormControl from "@mui/material/FormControl";
 import Footer from "../Footer/Footer";
 import Boton from "../botones/Boton";
-import CryptoJS from "crypto-js";
 import "./styles.css";
-import { MenuItem } from "@mui/material";
 
 const Login = () => {
   const [errorCredenciales, setErrorCredenciales] = useState("");

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css.css";
 
@@ -28,7 +28,7 @@ const Modal = ({ showModal, onClose }) => {
   }, [showModal, navigate]);
 const cerrarModal = ()=>{
   onClose();
-  navigate("/login")
+  navigate("  /login")
 }
   return (
     <div className={`modal ${showModal ? "show" : ""}`}>

@@ -1,19 +1,19 @@
+import {
+    Button,
+    FormControl,
+    FormHelperText,
+    Grid,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
+} from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Button,
-  FormControl,
-  FormHelperText,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
 import BackIcon from "../backIcon/BackIcon";
+import { validateField } from '../validaciones/validaciones';
 import Datos_aprendiz from "./datos_aprendiz";
 import Datos_beneficio from "./datos_beneficio";
-import { validateField } from '../validaciones/validaciones';
 const Insert_aprendiz = () => {
   const navigate = useNavigate();
   const [fichaExistente, setFichaExistente] = useState(false);
@@ -66,7 +66,7 @@ console.log(formData)
   const handleCodigoFichaBlur = () => {
     const codigo_ficha = formData.codigo_ficha;
 
-    fetch(`http://localhost:4000/get_ficha/${codigo_ficha}`)
+    fetch(`http://  localhost:4000/get_ficha/${codigo_ficha}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error al obtener los datos");
@@ -136,7 +136,7 @@ console.log(formData)
       return; // Detener el envío del formulario si hay errores
     }
     try {
-      const res = await fetch("http://localhost:4000/insertaraprendiz", {
+      const res = await fetch("http://  localhost:4000/insertaraprendiz", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -146,7 +146,7 @@ console.log(formData)
       console.log(res)
       if (res.ok) {
         alert("Aprendiz creado correctamente");
-        navigate("/adjudicados")
+        navigate("  /adjudicados")
       } else {
         alert("Ocurrió un error, inténtelo de nuevo por favor...");
       
@@ -385,7 +385,7 @@ console.log(formData)
           </Grid>
         <Datos_beneficio handleChange={handleChange} errors={errors} />
         <Grid item xs={12} md={4}>
-          <div className="container_boton">
+          <div className="container_boton text-center m-2">
 
         <Button type="submit" variant="contained"  onClick={handleSubmit}>
           Enviar

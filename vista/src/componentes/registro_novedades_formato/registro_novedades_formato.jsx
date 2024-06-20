@@ -1,8 +1,8 @@
+import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import Boton from "../botones/Boton";
-import "./styles.css";
 import Nav_instructor from "../nav_index/nav_instructor";
-import { TextField } from "@mui/material";
+import "./styles.css";
 
 const RegistroNovedadesFormato = () => {
   const [datos, setDatos] = useState([]);
@@ -11,7 +11,7 @@ const RegistroNovedadesFormato = () => {
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:4000/adjudicados")
+    fetch("http://  localhost:4000/adjudicados")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {

@@ -1,9 +1,9 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import BackIcon from "../backIcon/BackIcon";
 import FormularioRegistroAsistenciaTaller from "../formulario_registro_asistencia_taller/formulario_registro_asistencia_taller";
 import "./styles.css";
-import BackIcon from "../backIcon/BackIcon";
 
 const Asistencia_taller = () => {
   const location = useLocation();
@@ -15,7 +15,7 @@ const Asistencia_taller = () => {
   // Función para obtener la lista de asistencias
   const obtenerAsistencias = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/asistencias/${codigo_taller}`);
+      const response = await fetch(`http://  localhost:4000/asistencias/${codigo_taller}`);
       if (!response.ok) {
         throw new Error("Error al obtener la lista de asistencias.");
       }
@@ -38,9 +38,8 @@ const Asistencia_taller = () => {
   }, [codigo_taller]);
 
   return (
-    <div className="container_insert vh-100">
-      <p className="titulos text-center mt-3">{nombreTaller}</p>
-      <BackIcon />
+    <div className="container_registro_asis ">
+        <BackIcon />
 
       <div className="table_container_asistencia">
         <div>

@@ -5,25 +5,25 @@ const {
   getUsuario,
   deleteUsuario,
   updateUsuario,
-} = require("../controllers/users.controllers");
+} = require("../controllers/users.controllers.js");
 const {
   actualizardatos,
-} = require("../controllers/actualizardatos.controller");
-const { validarUsuario } = require("../controllers/login.controllers");
+} = require("../controllers/actualizardatos.controller.js");
+const { validarUsuario } = require("../controllers/login.controllers.js");
 const {
   extraerDatosExcel,
   get_beneficios,
   create_beneficio
-} = require("../controllers/beneficio.controller");
+} = require("../controllers/beneficio.controller.js");
 const {
   formularioRegistroAsistencia,
-} = require("../controllers/asistencia.controller");
-const { obtenerAdjudicados } = require("../controllers/adjudicados.controller");
-const { creacion_taller, get_talleres } = require("../controllers/talleres");
-const { asistencias } = require("../controllers/asistencias.controller");
-const { insert_aprendiz } = require("../controllers/creacion.aprendiz");
-const { obtenerCancelados } = require("../controllers/cancelados.controller");
-const { obtenerNovedades, insert_suspendido } = require("../controllers/novedades.controller");
+} = require("../controllers/asistencia.controller.js");
+const { obtenerAdjudicados } = require("../controllers/adjudicados.controller.js");
+const { creacion_taller, get_talleres } = require("../controllers/talleres.js");
+const { asistencias } = require("../controllers/asistencias.controller.js");
+const { insert_aprendiz } = require("../controllers/creacion.aprendiz.js");
+const { obtenerCancelados } = require("../controllers/cancelados.controller.js");
+const { obtenerNovedades, insert_suspendido } = require("../controllers/novedades.controller.js");
 const {
   get_estado_aprendiz,
   update_estado,

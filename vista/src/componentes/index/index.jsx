@@ -10,7 +10,7 @@ const Inicio = () => {
   const [equipo, setEquipo] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/get_information")
+    fetch("http://  localhost:4000/get_information")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {
@@ -28,7 +28,7 @@ const Inicio = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:4000/get_objetivos")
+    fetch("http://  localhost:4000/get_objetivos")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {
@@ -46,7 +46,7 @@ const Inicio = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:4000/get_equipo")
+    fetch("http://  localhost:4000/get_equipo")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {
@@ -112,7 +112,7 @@ const Inicio = () => {
                     }}
                   >
                     <img
-                      src={"http://localhost:4000/" + item.ruta_foto}
+                      src={"http://  localhost:4000/" + item.ruta_foto}
                       alt="Persona 1"
                       className="img-fluid"
                       style={{ width: "100%", height: "auto" }} // Establece el ancho al 100% para que la imagen se ajuste al contenedor

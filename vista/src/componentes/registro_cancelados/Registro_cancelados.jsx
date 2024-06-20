@@ -1,8 +1,8 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Boton from "../botones/Boton";
 import BackIcon from "../backIcon/BackIcon";
+import Boton from "../botones/Boton";
 
 const Registro_cancelados = ({ datosNovedad }) => {
   const navigate = useNavigate();
@@ -27,7 +27,7 @@ const Registro_cancelados = ({ datosNovedad }) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:4000/insert_suspendido", {
+      const res = await fetch("http://  localhost:4000/insert_suspendido", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const Registro_cancelados = ({ datosNovedad }) => {
         throw new Error("Error al enviar el formulario");
       } else {
         alert("Aprendiz suspendido del apoyo correctamente");
-        navigate("/novedades")
+        navigate("  /novedades")
       }
     } catch (error) {
       console.log("Error:", error);
@@ -55,7 +55,7 @@ const Registro_cancelados = ({ datosNovedad }) => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:4000/get_motivos_suspension")
+    fetch("http://  localhost:4000/get_motivos_suspension")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {

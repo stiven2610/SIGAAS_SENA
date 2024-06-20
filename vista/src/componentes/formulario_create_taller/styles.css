@@ -1,27 +1,39 @@
-.container_form_taller {
+.container_creacion {
+    width: 100%;
     display: flex;
+    background-image: url("../../../public/bienestar1.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    justify-content: center;
     align-items: center;
+  }
+  
+  .container-foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 90%;
+  }
+  
+  .login-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .container_crea_taller {
+    display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    max-width: 50%;
+  }
+  
+  .titulos {
+    font-size: 1.5rem;
+    font-weight: bold;
     text-align: center;
-}
-
-.titulos {
-    font-weight: bold;
-    font-size: larger;
-    color: #39A900;
-}
-
-.subtitulos {
-    font-weight: bold;
-}
-
-.formulario_taller {
-    min-width: 40%;
-    background: #f8f8f8;
-    padding: 2rem;
-    margin-top: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 0 10px #9beb6e;
-
-}
+    margin-bottom: 20px;
+  }
+  

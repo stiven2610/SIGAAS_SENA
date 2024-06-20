@@ -1,6 +1,13 @@
+import {
+    Box,
+    Button,
+    Container,
+    Paper,
+    TextField,
+    Typography
+} from "@mui/material";
 import React, { useState } from "react";
-import Boton from "../botones/Boton";
-
+import ("./styles.css")
 const FormularioRegistroAsistenciaTaller = ({ nombreTaller, codigo_taller, actualizarAsistencias }) => {
   const [numero_documento_aprendiz, setNumero_documento_aprendiz] = useState("");
   const [error, setError] = useState("");
@@ -13,7 +20,7 @@ const FormularioRegistroAsistenciaTaller = ({ nombreTaller, codigo_taller, actua
     }
 
     try {
-      const response = await fetch("http://localhost:4000/asistenciataller", {
+      const response = await fetch("http://  localhost:4000/asistenciataller", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,23 +53,37 @@ const FormularioRegistroAsistenciaTaller = ({ nombreTaller, codigo_taller, actua
   };
 
   return (
-    <div className="container_registro_asistencia">
-      <form onSubmit={handleSubmit}>
-        <label className="subtitulos m-2">
-          Ingrese el número de documento del aprendiz:
-          <input
-            className="form-control mt-2"
-            type="number"
-            value={numero_documento_aprendiz}
-            onChange={handleInputChange}
-            required
-          />
-        </label>
-        <Boton texto="Registrar Asistencia" textcolor="#f8f8f8" color="#39A900" />
-        <br />
-        {error && <p style={{ color: "red" }}>{error}</p>}
-      </form>
-    </div>
+    <Container className="container_registro_asistencia" maxWidth="sm">
+      <Paper elevation={3} sx={{ p: 3 }}>
+        <Typography variant="h6" className="titulos" align="center" gutterBottom>
+          Registro de Asistencia para {nombreTaller}
+        </Typography>
+        <form onSubmit={handleSubmit}>
+          <Box mb={2}>
+            <TextField
+              label="Número de documento del aprendiz"
+              type="number"
+              fullWidth
+              value={numero_documento_aprendiz}
+              onChange={handleInputChange}
+              error={!!error}
+              helperText={error}
+              required
+            />
+          </Box>
+          <Box display="flex" justifyContent="center">
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              style={{ backgroundColor: "#39A900", color: "#f8f8f8" }}
+            >
+              Registrar Asistencia
+            </Button>
+          </Box>
+        </form>
+      </Paper>
+    </Container>
   );
 };
 

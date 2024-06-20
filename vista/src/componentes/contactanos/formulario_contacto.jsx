@@ -54,7 +54,7 @@ const Formulario_contacto = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:4000/contactanos", {
+      const res = await fetch("http://  localhost:4000/contactanos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,7 +67,7 @@ const Formulario_contacto = () => {
         alert(
           "Correo enviado pronto tendrá respuesta por parte del equipo de bienestar"
         );
-        navigate("/");
+        navigate("/  ");
       }
     } catch (error) {
       console.log("Error:", error);

@@ -1,7 +1,5 @@
 
 import { useEffect, useState } from "react";
-import Boton from "../botones/Boton";
-import Registro_cancelados from "../registro_cancelados/Registro_cancelados";
 import BackIcon from "../backIcon/BackIcon";
 import "./styles.css";
 
@@ -13,7 +11,7 @@ const Novedades_presentadas = () => {
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
   console.log(datosNovedad);
   useEffect(() => {
-    fetch("http://localhost:4000/novedades")
+    fetch("http://  localhost:4000/novedades")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {

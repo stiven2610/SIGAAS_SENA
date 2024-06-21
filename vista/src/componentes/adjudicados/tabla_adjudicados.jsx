@@ -120,7 +120,7 @@ const Tabla_adjudicados = () => {
 
           <div className="add">
             <Tooltip title="Adjudicar un aprendiz">
-              <Button variant="contained" endIcon={<AddBoxIcon />}>
+              <Button variant="contained" onClick={()=>{navigate("/insertaprendiz")}} endIcon={<AddBoxIcon />}>
                 Nuevo
               </Button>
             </Tooltip>

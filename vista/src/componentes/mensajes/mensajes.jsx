@@ -8,7 +8,7 @@ const Mensajes = () => {
 
   useEffect(() => {
     setCargando(true);
-    fetch("http://  localhost:4000/get_mensajes")
+    fetch("http://localhost:4000/get_mensajes")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {

@@ -1,25 +1,28 @@
-import AddBoxIcon from "@mui/icons-material/AddBox";
-import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
-import EditIcon from "@mui/icons-material/Edit";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Boton from "../botones/Boton";
+import "./styles.css";
+import Registro_cancelados from "../registro_cancelados/Registro_cancelados";
+import Update_aprendiz from "../update_aprendiz/update_aprendiz";
 import {
-  Button,
-  IconButton,
-  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
+  Paper,
+  IconButton,
+  Tooltip,
+  Typography,
   TextField,
-  Tooltip
+  Box,
+  Button,
 } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Boton from "../botones/Boton";
-import Registro_cancelados from "../registro_cancelados/Registro_cancelados";
-import Update_aprendiz from "../update_aprendiz/update_aprendiz";
-import "./styles.css";
+import ArrowCircleDownIcon from "@mui/icons-material/ArrowCircleDown";
+import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 const Tabla_adjudicados = () => {
   const navigate = useNavigate();
   const [datosNovedad, setDatosNovedad] = useState(null);
@@ -61,9 +64,7 @@ const Tabla_adjudicados = () => {
       formularioRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [mostrarCancelar]);
-  const handleNavigate = () => {
-    navigate('/insertaprendiz'); // Reemplaza '/ruta-deseada' con la ruta a la que quieres navegar
-  };
+
   const handleBusquedaChange = (e) => {
     setFiltroBusqueda(e.target.value);
   };
@@ -119,7 +120,7 @@ const Tabla_adjudicados = () => {
 
           <div className="add">
             <Tooltip title="Adjudicar un aprendiz">
-              <Button variant="contained" onClick={handleNavigate} endIcon={<AddBoxIcon />}>
+              <Button variant="contained" endIcon={<AddBoxIcon />}>
                 Nuevo
               </Button>
             </Tooltip>

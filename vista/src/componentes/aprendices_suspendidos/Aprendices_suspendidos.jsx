@@ -10,7 +10,7 @@ const Suspendidos = () => {
 
   const fetchSuspendidos = () => {
     setCargando(true);
-    fetch("http://  localhost:4000/get_suspendidos")
+    fetch("http://localhost:4000/get_suspendidos")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {

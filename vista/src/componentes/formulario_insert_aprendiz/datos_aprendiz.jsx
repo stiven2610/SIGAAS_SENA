@@ -22,7 +22,7 @@ const Datos_aprendiz = ({ handleChange, errors, documentos }) => {
 
   return (
     <>
-      <p className="titulos text-center">Datos del aprendiz</p>
+      <h4 className="titul text-center">Datos del aprendiz</h4>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             <TextField

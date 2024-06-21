@@ -20,7 +20,7 @@ const FormularioRegistroAsistenciaTaller = ({ nombreTaller, codigo_taller, actua
     }
 
     try {
-      const response = await fetch("http://  localhost:4000/asistenciataller", {
+      const response = await fetch("http://localhost:4000/asistenciataller", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

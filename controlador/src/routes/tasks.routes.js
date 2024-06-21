@@ -40,7 +40,7 @@ const { Get_information } = require("../controllers/information.js");
 const { Get_objetivos } = require("../controllers/objetivos.js");
 const { Get_equipo, create_persona, upload } = require("../controllers/equipo.js");
 const { Reactivar_aprendiz } = require("../controllers/reactivar_aprendiz.js");
-const { get_mensajes } = require("../controllers/mensajes.js");
+const { get_mensajes, create_mensaje } = require("../controllers/mensajes.js");
 //rutas para CRUD de usuario...
 router.get("/get_documentos", Get_documentos);
 router.get("/get_ficha/:codigo_ficha",Get_ficha)
@@ -54,6 +54,7 @@ router.delete("/usuario/:id", deleteUsuario);
 router.put("/usuario/:id", updateUsuario);
 router.put("/reactivaraprendiz/:numero_documento_aprendiz", Reactivar_aprendiz);
 router.get("/get_mensajes",get_mensajes);
+router.post("/create_mensaje",create_mensaje);
 router.get("/get_information",Get_information)
 router.get("/get_objetivos",Get_objetivos);
 router.get("/get_equipo",Get_equipo);

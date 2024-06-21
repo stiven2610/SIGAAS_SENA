@@ -32,7 +32,7 @@ const create_persona = async (req, res) => {
 console.log(ruta_foto)
     try {
         const insertQuery = "SELECT fun_ins_equ($1, $2, $3, $4, $5)";
-        const insertValues = [nombre, apellido, cargo, descripcion, ruta_foto];
+        const insertValues = [nombre, apellido, cargo,  ruta_foto,descripcion];
         
         await pool.query(insertQuery, insertValues);
 

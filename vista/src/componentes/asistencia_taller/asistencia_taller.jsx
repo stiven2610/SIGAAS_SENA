@@ -15,7 +15,7 @@ const Asistencia_taller = () => {
   // Función para obtener la lista de asistencias
   const obtenerAsistencias = async () => {
     try {
-      const response = await fetch(`http://  localhost:4000/asistencias/${codigo_taller}`);
+      const response = await fetch(`http://localhost:4000/asistencias/${codigo_taller}`);
       if (!response.ok) {
         throw new Error("Error al obtener la lista de asistencias.");
       }
@@ -76,7 +76,14 @@ const Asistencia_taller = () => {
                     <td>{item.numero_documento_aprendiz}</td>
                     <td>{item.nombre_completo_aprendiz}</td>
                     <td>{item.codigo_ficha}</td>
-                    <td>{item.fecha_insert}</td>
+                    <td>{new Date(item.fecha_insert).toLocaleDateString(
+                          "es-ES",
+                          {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                          }
+                        )}</td>
                   </tr>
                 ))
               )}

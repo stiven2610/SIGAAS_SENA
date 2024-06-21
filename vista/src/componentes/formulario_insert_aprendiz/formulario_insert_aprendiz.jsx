@@ -1,19 +1,21 @@
 import {
-    Button,
-    FormControl,
-    FormHelperText,
-    Grid,
-    InputLabel,
-    MenuItem,
-    Select,
-    TextField,
+  Button,
+  FormControl,
+  FormHelperText,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackIcon from "../backIcon/BackIcon";
-import { validateField } from '../validaciones/validaciones';
+import { validateField } from "../validaciones/validaciones";
 import Datos_aprendiz from "./datos_aprendiz";
 import Datos_beneficio from "./datos_beneficio";
+
 const Insert_aprendiz = () => {
   const navigate = useNavigate();
   const [fichaExistente, setFichaExistente] = useState(false);
@@ -40,33 +42,33 @@ const Insert_aprendiz = () => {
     nombre_programa: "",
     numero_documento_instructor_lider: "",
     nombre_instructor_lider: "",
-    email_instructor: ""
+    email_instructor: "",
   });
-console.log(formData)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-  
+
     if (name === "codigo_ficha") {
       resetFormacionFields();
       setFichaExistente(false);
     }
-  
+
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
-  
+
     const error = validateField(name, value);
     setErrors((prevErrors) => ({
       ...prevErrors,
       [name]: error,
     }));
   };
+
   const handleCodigoFichaBlur = () => {
     const codigo_ficha = formData.codigo_ficha;
 
-    fetch(`http://  localhost:4000/get_ficha/${codigo_ficha}`)
+    fetch(`http://localhost:4000/get_ficha/${codigo_ficha}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error al obtener los datos");
@@ -85,7 +87,8 @@ console.log(formData)
             fecha_fin_lectiva: fichaData[0].fecha_fin_lectiva
               ? fichaData[0].fecha_fin_lectiva.split("T")[0]
               : "",
-            fecha_inicio_etapa_productiva: fichaData[0].fecha_inicio_etapa_productiva
+            fecha_inicio_etapa_productiva: fichaData[0]
+              .fecha_inicio_etapa_productiva
               ? fichaData[0].fecha_inicio_etapa_productiva.split("T")[0]
               : "",
             fecha_fin_ficha: fichaData[0].fecha_fin_ficha
@@ -111,6 +114,7 @@ console.log(formData)
         console.error("Error en la solicitud:", error);
       });
   };
+
   const resetFormacionFields = () => {
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -136,269 +140,281 @@ console.log(formData)
       return; // Detener el envío del formulario si hay errores
     }
     try {
-      const res = await fetch("http://  localhost:4000/insertaraprendiz", {
+      const res = await fetch("http://localhost:4000/insertaraprendiz", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
-      console.log(res)
+      console.log(res);
       if (res.ok) {
         alert("Aprendiz creado correctamente");
-        navigate("  /adjudicados")
+        navigate("/adjudicados");
       } else {
         alert("Ocurrió un error, inténtelo de nuevo por favor...");
-      
       }
     } catch (error) {
       console.log("Error:", error);
     }
   };
+
   return (
     <>
-    <div className="container_insert">
+      <div  style={{
+         background:"#dfdada"
+          }} >
+        <div
+        
+          className="insert_aprendiz"
+          style={{
+            margin: "auto",
+            background:"#f8f8f8",
+            maxWidth: "1200px",
+            padding: "20px",
+            border: "1px solid #ccc",
+            borderRadius: "10px",
+            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
+          }}
+        >
+      <h3 className="titulos mt-3">Adjudicar nuevo aprendiz</h3>
 
-    <div className="insert_aprendiz">
-    <p className="titulos text-center mt-3">Adjudicar nuevo aprendiz</p>
-
-      <form className="container" onSubmit={handleSubmit} autoComplete="off">
-        <BackIcon />
-        <Datos_aprendiz handleChange={handleChange} errors={errors} />
-          <p className="titulos text-center">Datos de Formación</p>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                id="codigo_ficha"
-                name="codigo_ficha"
-                label="Código de ficha"
-                variant="outlined"
-                value={formData.codigo_ficha}
-                onChange={handleChange}
-                onBlur={() => {
-                  handleCodigoFichaBlur();
-                  resetFormacionFields();
-                }}
-                error={!!errors.codigo_ficha}
-                helperText={errors.codigo_ficha}
-                required
-                inputProps={{
-                  maxLength: 10, 
-                }}
-              />
-            </Grid>
-
-            <Grid item xs={12} md={4}>
-              <FormControl fullWidth error={!!errors.id_modalidad_formacion}>
-                <InputLabel id="tipo-documento-label">
-                  Modalidad de formación
-                </InputLabel>
-                <Select
-                  labelId="tipo-documento-label"
-                  id="id_modalidad_formacion"
-                  name="id_modalidad_formacion"
-                  value={formData.id_modalidad_formacion}
+          <form
+            className="container"
+            onSubmit={handleSubmit}
+            autoComplete="off"
+          >
+            <BackIcon />
+            <Datos_aprendiz handleChange={handleChange} errors={errors} />
+            <h4 className="mt-3 text-center" >
+              Datos de Formación
+            </h4>
+            <Grid container spacing={3}>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  id="codigo_ficha"
+                  name="codigo_ficha"
+                  label="Código de ficha"
+                  variant="outlined"
+                  value={formData.codigo_ficha}
                   onChange={handleChange}
-                  label="Modalidad de formación"
-                  error={!!errors.id_modalidad_formacion}
+                  onBlur={() => {
+                    handleCodigoFichaBlur();
+                    resetFormacionFields();
+                  }}
+                  error={!!errors.codigo_ficha}
+                  helperText={errors.codigo_ficha}
                   required
-                  disabled={fichaExistente} // Bloquear si la ficha existe
-                >
-                  <MenuItem value={1}>Presencial</MenuItem>
-                  <MenuItem value={2}>Virtual</MenuItem>
-                </Select>
-                <FormHelperText>{errors.id_modalidad_formacion}</FormHelperText>
-              </FormControl>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <FormControl fullWidth error={!!errors.id_modalidad_formacion}>
-                <InputLabel id="tipo-documento-label">
-                  Nivel de formación
-                </InputLabel>
-                <Select
-                  labelId="tipo-documento-label"
-                  id="nivel_formacion"
-                  name="nivel_formacion"
-                  value={formData.nivel_formacion}
+                  inputProps={{
+                    maxLength: 10,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <FormControl fullWidth error={!!errors.id_modalidad_formacion}>
+                  <InputLabel id="tipo-documento-label">
+                    Modalidad de formación
+                  </InputLabel>
+                  <Select
+                    labelId="tipo-documento-label"
+                    id="id_modalidad_formacion"
+                    name="id_modalidad_formacion"
+                    value={formData.id_modalidad_formacion}
+                    onChange={handleChange}
+                    label="Modalidad de formación"
+                    required
+                    disabled={fichaExistente}
+                  >
+                    <MenuItem value={1}>Presencial</MenuItem>
+                    <MenuItem value={2}>Virtual</MenuItem>
+                  </Select>
+                  <FormHelperText>
+                    {errors.id_modalidad_formacion}
+                  </FormHelperText>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <FormControl fullWidth error={!!errors.nivel_formacion}>
+                  <InputLabel id="nivel-formacion-label">
+                    Nivel de formación
+                  </InputLabel>
+                  <Select
+                    labelId="nivel-formacion-label"
+                    id="nivel_formacion"
+                    name="nivel_formacion"
+                    value={formData.nivel_formacion}
+                    onChange={handleChange}
+                    label="Nivel de formación"
+                    required
+                    disabled={fichaExistente}
+                  >
+                    <MenuItem value="Técnico">Técnico</MenuItem>
+                    <MenuItem value="Tecnólogo">Tecnólogo</MenuItem>
+                  </Select>
+                  <FormHelperText>{errors.nivel_formacion}</FormHelperText>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  id="fecha_inicio_ficha"
+                  name="fecha_inicio_ficha"
+                  label="Fecha inicio ficha"
+                  variant="outlined"
+                  value={formData.fecha_inicio_ficha}
                   onChange={handleChange}
-                  label="Nivel de formación"
-                  error={!!errors.nivel_formacion}
+                  error={!!errors.fecha_inicio_ficha}
+                  helperText={errors.fecha_inicio_ficha}
                   required
-                  disabled={fichaExistente} // Bloquear si la ficha existe
-                >
-                  <MenuItem value="Técnico">Técnico</MenuItem>
-                  <MenuItem value="Tecnólogo">Tecnólogo</MenuItem>
-                </Select>
-                <FormHelperText>{errors.nivel_formacion}</FormHelperText>
-              </FormControl>
+                  type="date"
+                  disabled={fichaExistente}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  id="fecha_fin_lectiva"
+                  name="fecha_fin_lectiva"
+                  label="Fecha fin lectiva"
+                  variant="outlined"
+                  value={formData.fecha_fin_lectiva}
+                  onChange={handleChange}
+                  error={!!errors.fecha_fin_lectiva}
+                  helperText={errors.fecha_fin_lectiva}
+                  required
+                  type="date"
+                  disabled={fichaExistente}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  id="fecha_inicio_etapa_productiva"
+                  name="fecha_inicio_etapa_productiva"
+                  label="Fecha inicio productiva"
+                  variant="outlined"
+                  value={formData.fecha_inicio_etapa_productiva}
+                  onChange={handleChange}
+                  error={!!errors.fecha_inicio_etapa_productiva}
+                  helperText={errors.fecha_inicio_etapa_productiva}
+                  required
+                  type="date"
+                  disabled={fichaExistente}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  id="nombre_programa"
+                  name="nombre_programa"
+                  label="Nombre programa de formación"
+                  variant="outlined"
+                  value={formData.nombre_programa}
+                  onChange={handleChange}
+                  error={!!errors.nombre_programa}
+                  helperText={errors.nombre_programa}
+                  required
+                  disabled={fichaExistente}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  id="fecha_fin_ficha"
+                  name="fecha_fin_ficha"
+                  label="Fecha fin ficha"
+                  variant="outlined"
+                  value={formData.fecha_fin_ficha}
+                  onChange={handleChange}
+                  error={!!errors.fecha_fin_ficha}
+                  helperText={errors.fecha_fin_ficha}
+                  required
+                  type="date"
+                  disabled={fichaExistente}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  id="numero_documento_instructor_lider"
+                  name="numero_documento_instructor_lider"
+                  label="Número documento instructor líder"
+                  variant="outlined"
+                  value={formData.numero_documento_instructor_lider}
+                  onChange={handleChange}
+                  error={!!errors.numero_documento_instructor_lider}
+                  helperText={errors.numero_documento_instructor_lider}
+                  required
+                  disabled={fichaExistente}
+                  inputProps={{
+                    maxLength: 10,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  id="nombre_instructor_lider"
+                  name="nombre_instructor_lider"
+                  label="Nombre completo instructor líder"
+                  variant="outlined"
+                  value={formData.nombre_instructor_lider}
+                  onChange={handleChange}
+                  error={!!errors.nombre_instructor_lider}
+                  helperText={errors.nombre_instructor_lider}
+                  required
+                  disabled={fichaExistente}
+                  inputProps={{
+                    maxLength: 150,
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12} md={4}>
+                <TextField
+                  fullWidth
+                  id="email_instructor"
+                  name="email_instructor"
+                  label="Correo Electrónico instructor"
+                  variant="outlined"
+                  value={formData.email_instructor}
+                  onChange={handleChange}
+                  error={!!errors.email_instructor}
+                  helperText={errors.email_instructor}
+                  required
+                  disabled={fichaExistente}
+                  inputProps={{
+                    maxLength: 100,
+                  }}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                id="fecha_inicio_ficha"
-                name="fecha_inicio_ficha"
-                label="Fecha inicio ficha"
-                variant="outlined"
-                value={formData.fecha_inicio_ficha}
-                onChange={handleChange}
-                error={!!errors.fecha_inicio_ficha}
-                helperText={errors.fecha_inicio_ficha}
-                required
-                type="date"
-                disabled={fichaExistente} // Bloquear si la ficha existe
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
+            <Datos_beneficio handleChange={handleChange} errors={errors} />
+            <Grid
+              container
+              justifyContent="center"
+              style={{ marginTop: "20px" }}
+            >
+              <Button type="submit" variant="contained" onClick={handleSubmit}>
+                Enviar
+              </Button>
             </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                id="fecha_fin_lectiva"
-                name="fecha_fin_lectiva"
-                label="Fecha fin lectiva"
-                variant="outlined"
-                value={formData.fecha_fin_lectiva}
-                onChange={handleChange}
-                error={!!errors.fecha_fin_lectiva}
-                helperText={errors.fecha_fin_lectiva}
-                required
-                type="date"
-                disabled={fichaExistente} // Bloquear si la ficha existe
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                id="fecha_inicio_etapa_productiva"
-                name="fecha_inicio_etapa_productiva"
-                label="Fecha inicio productiva"
-                variant="outlined"
-                value={formData.fecha_inicio_etapa_productiva}
-                onChange={handleChange}
-                error={!!errors.fecha_inicio_etapa_productiva}
-                helperText={errors.fecha_inicio_etapa_productiva}
-                required
-                type="date"
-                disabled={fichaExistente} // Bloquear si la ficha existe
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                id="nombre_programa"
-                name="nombre_programa"
-                label="Nombre programa de formación"
-                variant="outlined"
-                value={formData.nombre_programa}
-                onChange={handleChange}
-                error={!!errors.nombre_programa}
-                helperText={errors.nombre_programa}
-                required
-                disabled={fichaExistente} // Bloquear si la ficha existe
-              />
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                id="fecha_fin_ficha"
-                name="fecha_fin_ficha"
-                label="Fecha fin ficha"
-                variant="outlined"
-                value={formData.fecha_fin_ficha}
-                onChange={handleChange}
-                error={!!errors.fecha_fin_ficha}
-                helperText={errors.fecha_fin_ficha}
-                required
-                type="date"
-                disabled={fichaExistente} // Bloquear si la ficha existe
-                InputLabelProps={{
-                  shrink: true,
-                }}
-              />
-            </Grid>
-
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                id="numero_documento_instructor_lider"
-                name="numero_documento_instructor_lider"
-                label="Número documento instructor líder"
-                variant="outlined"
-                value={formData.numero_documento_instructor_lider}
-                onChange={handleChange}
-                error={!!errors.numero_documento_instructor_lider}
-                helperText={errors.numero_documento_instructor_lider}
-                required
-                disabled={fichaExistente} // Bloquear si la ficha existe
-                inputProps={{
-                  maxLength: 10, 
-                }}
-              />
-            </Grid>
-
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                id="nombre_instructor_lider"
-                name="nombre_instructor_lider"
-                label="Nombre completo instructor líder"
-                variant="outlined"
-                value={formData.nombre_instructor_lider}
-                onChange={handleChange}
-                error={!!errors.nombre_instructor_lider}
-                helperText={errors.nombre_instructor_lider}
-                required
-                disabled={fichaExistente} // Bloquear si la ficha existe
-                inputProps={{
-                  maxLength: 150, 
-                }}
-              />
-            </Grid>
-
-            <Grid item xs={12} md={4}>
-              <TextField
-                fullWidth
-                id="email_instructor"
-                name="email_instructor"
-                label="Correo Electrónico instructor"
-                variant="outlined"
-                value={formData.email_instructor}
-                onChange={handleChange}
-                error={!!errors.email_instructor}
-                helperText={errors.email_instructor}
-                required
-                disabled={fichaExistente} // Bloquear si la ficha existe
-                inputProps={{
-                  maxLength: 100, 
-                }}
-              />
-            </Grid>
-            
-          </Grid>
-        <Datos_beneficio handleChange={handleChange} errors={errors} />
-        <Grid item xs={12} md={4}>
-          <div className="container_boton text-center m-2">
-
-        <Button type="submit" variant="contained"  onClick={handleSubmit}>
-          Enviar
-        </Button>
+          </form>
         </div>
-
-            </Grid>
-       
-      </form>
-      </div>
       </div>
     </>
-    
   );
 };
 

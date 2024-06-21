@@ -54,7 +54,7 @@ const Formulario_contacto = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://  localhost:4000/contactanos", {
+      const res = await fetch("http://localhost:4000/create_mensaje", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,7 +65,7 @@ const Formulario_contacto = () => {
         throw new Error("Error al enviar el formulario");
       } else {
         alert(
-          "Correo enviado pronto tendrá respuesta por parte del equipo de bienestar"
+          "Mensaje enviado pronto tendrá respuesta por parte del equipo de bienestar"
         );
         navigate("/  ");
       }

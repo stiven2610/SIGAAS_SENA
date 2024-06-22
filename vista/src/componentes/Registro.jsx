@@ -20,7 +20,7 @@ const Registro_Usuario = () => {
     console.log('Datos de registro de usuario:', userData);
   };
 
-  return (
+  return 
     <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">

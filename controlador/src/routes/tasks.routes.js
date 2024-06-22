@@ -5,25 +5,25 @@ const {
   getUsuario,
   deleteUsuario,
   updateUsuario,
-} = require("../controllers/users.controllers");
+} = require("../controllers/users.controllers.js");
 const {
   actualizardatos,
-} = require("../controllers/actualizardatos.controller");
-const { validarUsuario } = require("../controllers/login.controllers");
+} = require("../controllers/actualizardatos.controller.js");
+const { validarUsuario } = require("../controllers/login.controllers.js");
 const {
   extraerDatosExcel,
   get_beneficios,
   create_beneficio
-} = require("../controllers/beneficio.controller");
+} = require("../controllers/beneficio.controller.js");
 const {
   formularioRegistroAsistencia,
-} = require("../controllers/asistencia.controller");
-const { obtenerAdjudicados } = require("../controllers/adjudicados.controller");
-const { creacion_taller, get_talleres } = require("../controllers/talleres");
-const { asistencias } = require("../controllers/asistencias.controller");
-const { insert_aprendiz } = require("../controllers/creacion.aprendiz");
-const { obtenerCancelados } = require("../controllers/cancelados.controller");
-const { obtenerNovedades, insert_suspendido } = require("../controllers/novedades.controller");
+} = require("../controllers/asistencia.controller.js");
+const { obtenerAdjudicados } = require("../controllers/adjudicados.controller.js");
+const { creacion_taller, get_talleres } = require("../controllers/talleres.js");
+const { asistencias } = require("../controllers/asistencias.controller.js");
+const { insert_aprendiz } = require("../controllers/creacion.aprendiz.js");
+const { obtenerCancelados } = require("../controllers/cancelados.controller.js");
+const { obtenerNovedades, insert_suspendido } = require("../controllers/novedades.controller.js");
 const {
   get_estado_aprendiz,
   update_estado,
@@ -40,7 +40,8 @@ const { Get_information } = require("../controllers/information.js");
 const { Get_objetivos } = require("../controllers/objetivos.js");
 const { Get_equipo, create_persona, upload } = require("../controllers/equipo.js");
 const { Reactivar_aprendiz } = require("../controllers/reactivar_aprendiz.js");
-const { get_mensajes } = require("../controllers/mensajes.js");
+const { get_mensajes, create_mensaje } = require("../controllers/mensajes.js");
+const get_item = require("../controllers/items.formato.js");
 //rutas para CRUD de usuario...
 router.get("/get_documentos", Get_documentos);
 router.get("/get_ficha/:codigo_ficha",Get_ficha)
@@ -50,10 +51,12 @@ router.post("/insert_suspendido",insert_suspendido)
 router.get("/get_suspendidos",get_suspendidos)
 router.get("/usuarios", getALlUsuarios);
 router.get("/usuario/:id", getUsuario);
+router.get("/items", get_item);
 router.delete("/usuario/:id", deleteUsuario);
 router.put("/usuario/:id", updateUsuario);
 router.put("/reactivaraprendiz/:numero_documento_aprendiz", Reactivar_aprendiz);
 router.get("/get_mensajes",get_mensajes);
+router.post("/create_mensaje",create_mensaje);
 router.get("/get_information",Get_information)
 router.get("/get_objetivos",Get_objetivos);
 router.get("/get_equipo",Get_equipo);

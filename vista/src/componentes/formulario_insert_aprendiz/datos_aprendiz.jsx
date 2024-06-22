@@ -1,7 +1,6 @@
 
-import React, { useEffect } from "react";
-import { Grid, FormControl, InputLabel, MenuItem, Select, TextField, FormHelperText } from "@mui/material";
-import { useState } from "react"; // Asegúrate de importar useState
+import { FormControl, FormHelperText, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import React, { useEffect, useState } from "react";
 
 const Datos_aprendiz = ({ handleChange, errors, documentos }) => {
   const [documentosOptions, setDocumentosOptions] = useState([]); // Estado local para almacenar los documentos
@@ -23,7 +22,7 @@ const Datos_aprendiz = ({ handleChange, errors, documentos }) => {
 
   return (
     <>
-      <p className="titulos text-center">Datos del aprendiz</p>
+      <h4 className="titul text-center">Datos del aprendiz</h4>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
             <TextField

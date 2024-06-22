@@ -1,23 +1,52 @@
-.container_contacta{
+.container-contactanos {
     display: flex;
+    align-items: center;
     justify-content: center;
-    padding: 2rem;
-}
-.container-contactanos{
-    width: 40rem;
-    padding: 2rem;
-    margin-bottom: 7rem;
-    border-radius: 15px;
-    box-shadow: 0 0 10px #9beb6e;
-    background: #f8f8f8;
-    text-align: center;
+    height: calc(100vh - 300px);
+    background: #e9e7e7;
 }
 
-.boton-contactos{
-    background: #39A900;
-    border: none;
-    width: 20%;
-    padding: 10px;
-    margin: 2rem;
-    border-radius: 10px;
+.container_form-contacto h5 {
+    margin-bottom: 1rem;
+    
+    color: #ffff;
+}
+.contain-contact {
+    width: 70%;
+    text-align: center;
+    padding: 2rem;
+    background: #989998;
   }
+.contacto-foto {
+    width: auto;
+    display: flex;
+    justify-content: end;
+}
+
+.container_form-contacto {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 1200px) {
+    .login-image {
+        display:none;
+    }
+    .contacto-foto{
+        display: none;
+    }
+    .contain-contact{
+        width: 50%;
+    }.container_form-contacto{
+        width: 100%;
+    justify-content: center;
+
+    }
+}
+@media (max-width: 756px) {
+    .contain-contact{
+        width: 80%;
+    }
+}

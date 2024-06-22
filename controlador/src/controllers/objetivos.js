@@ -4,7 +4,7 @@ const Get_objetivos = async (req, res) => {
   
     
     try {
-        const { rows } = await pool.query('SELECT  titulo_objetivos, contenido_objetivos from objetivos' );
+        const { rows } = await pool.query('SELECT id_objetivo, titulo_objetivo, contenido_objetivo from objetivo' );
         
         
         res.json({ success: true, data: rows }); 

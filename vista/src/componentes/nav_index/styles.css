@@ -1,43 +1,88 @@
-.header-container {
+/* styles.css */
+.header-container,
+.container-nav {
+  background-color: #39a900;
+  color: white;
+  position: sticky;
+  top: 0;
   width: 100%;
+  z-index: 1000;
   display: flex;
   align-items: center;
-  background: #f8f8f8;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 10px;
 }
 
-.link-nav.active {
-  color: #39A900;
-  font-weight: bold;
-  text-decoration: underline; /* Opcional: puedes agregar subrayado */
+.header-container .logo-container img,
+.container-nav .logo-container img {
+  width: 150px;
+  height: auto;
 }
 
-.sigaas-container {
-  text-align: center;
-  width: 60%;
-}
 .navbar-container {
   display: flex;
-  justify-content: center;
-  background: #39A900;
-  text-align: center;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 
-}
-.sigaas-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background: #39A900;
-}
-.sigaas {
-  color: #FBFBE2;
+.navbar-container .navbar-nav .nav-link {
+  color: white;
   font-weight: bold;
+  margin: 0 10px;
 }
 
-.link-nav {
-  text-decoration: none;
-  color: #ffff;
-  padding: 1rem;
+.navbar-container .navbar-nav .nav-link.active {
+  border-bottom: 2px solid white;
+}
+.nav-var{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.titulo-inicio h5 {
+  color: white;
+  text-align: center;
+  margin: 0;
+  flex: 1;
+}
+
+.logo-container {
+  background: #ffff;
+  color: #39a900;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-link {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+
+
+
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .titulo-inicio h5 {
+    margin-bottom: 10px;
+  }
+
+  .container-link {
+    justify-content: center;
+  }
+
+  .header-container .logo-container img,
+  .container-nav .logo-container img {
+    width: 120px;
+  }
 }

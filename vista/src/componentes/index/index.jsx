@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Carousel } from "react-bootstrap";
 import Footer from "../Footer/Footer";
@@ -69,13 +68,10 @@ const Inicio = () => {
       <div className="container-inicio">
         <>
           <div className="row">
-            <div className="col-md-12 text-center">
-              <h3 className="titulos">BIENESTAR AL APRENDIZ</h3>
-              <p className="text-muted">
-                Es una estrategia institucional para contribuir en la
-                permanencia y el desempeño exitoso de los aprendices de la
-                entidad en su proceso formativo con enfoque territorial y
-                diferencial.
+            <div className="col-md-12 text-center pt-4">
+            <h3 className="titulos">¿ Qué es Bienestar al Aprendiz ?</h3>
+              <p className="m-4 text-muted">
+              Es una estrategia que contribuye a brindar servicios a los aprendices en formación de los programas técnicos y tecnológicos de las modalidades , presencial, virtual y a distancia con el fin de promover acciones que permitan fortalecer sus competencias y habilidades socioemocionales, deportivas, artísticas, de liderazgo, culturales , brindar información sobre la promoción de la salud y prevención de la enfermedad, ofrecer apoyos socioeconómicos para el mejoramiento de su calidad de vida y la satisfacción de culminar  su proceso formativo  con éxito.
               </p>
             </div>
           </div>
@@ -86,29 +82,80 @@ const Inicio = () => {
                 <Carousel.Item>
                   <img
                     className="img-carousel"
-                    src="https://www.wradio.com.co/resizer/cXRNhRWnP1qz5piF1R6Ulc-9_rc=/1024x0/filters:format(png):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/prisaradioco/QGJ6WGMV45GD7GPAV2CTEKCSME.png"
+                    src="../../../public/images/IMG_20240524_155518852_AE.jpg"
                     alt="Imagen 1"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
                     className="img-carousel"
-                    src="https://www.sena.edu.co/es-co/comunidades/aprendices/PublishingImages/Paginas/bienestarAprendiz/bienestar_SENA_600.jpg"
+                    src="../../../public/images/IMG_20240430_171151646_AE.jpg"
+                    alt="Imagen 2"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="img-carousel"
+                    src="../../../public/images/IMG_20240214_164502930_AE.jpg"
+                    alt="Imagen 2"
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="img-carousel"
+                    src="../../../public/images/SAVE_20230929_173601.jpg"
                     alt="Imagen 2"
                   />
                 </Carousel.Item>
               </Carousel>
             </div>
           </div>
-          <div className="row mt-3 text-center">
+         
+          <div className="container-objetivos row m-4 text-center">
+            <h5 className="titulos ">
+              Información bienestar
+            </h5>
+            {datos.map((item) => (
+              <div className="col-md-4" key={item.id_informacion}>
+                <div className="col-md-12 mt-2">
+                  <div className="card">
+                    <div className="card-body">
+                      <h4 className="titulo">{item.titulo}</h4>
+                      <p className="card-text">{item.contenido}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="container-informacion row m-3 mt-4">
+            <h3 className="titulos p-3 text-center w-100">
+            Objetivos Plan de Bienestar al Aprendiz
+             
+            </h3>
+            {objetivos.map((item, index) => (
+              <div className="col-lg-4 col-md-6 " key={index}>
+                <div className="card m-1 h-100">
+                  <div className="card-body">
+                    <h4 className="titulo text-center">{item.titulo_objetivo}</h4>
+                    <p className="card-text">{item.contenido_objetivo}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </>
+      </div>
+      <div className="container-equipo row mt-3 text-center">
             <h3 className="titulos m-3">Equipo de Bienestar al Aprendiz</h3>
             {equipo.map((item, index) => (
-              <div className="col-md-4 mb-4 aling-items." key={index}>
-                <div className="border rounded p-2 shadow  d-flex flex-column align-items-center  justify-content-center">
+              <div className="col-md-4 mb-3 d-flex justify-content-center" key={index}>
+                <div className="border rounded p-2 shadow  ">
                   <div
                     style={{
                       width: "250px",
-                      height: "250px",
+                      height: "270px",
                       overflow: "hidden",
                     }}
                   >
@@ -119,49 +166,12 @@ const Inicio = () => {
                       style={{ width: "100%", height: "auto" }} // Establece el ancho al 100% para que la imagen se ajuste al contenedor
                     />
                   </div>
-                  <h4>{item.nombre_integrante}</h4>
+                  <h6>{item.nombre}  {item.apellido}</h6>
                   <p>{item.cargo}</p>
-                  <p>{item.descripcion}</p>
                 </div>
               </div>
             ))}
           </div>
-
-          <div className="row m-4 text-center">
-            <h3 className="titulos p-3">
-              Objetivos Plan de Bienestar al Aprendiz
-            </h3>
-            {datos.map((item, index) => (
-              <div className="col-md-4" key={index}>
-                <div className="col-md-12 mt-2">
-                  <div className="card">
-                    <div className="card-body">
-                      <h4 className="titulos">{item.titulo}</h4>
-                      <p className="card-text">{item.contenido}</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="row m-3 mt-4">
-            <h3 className="titulos p-3 text-center w-100">
-              Objetivos Plan de Bienestar al Aprendiz
-            </h3>
-            {objetivos.map((item, index) => (
-              <div className="col-lg-4 col-md-6 " key={index}>
-                <div className="card m-1 h-100">
-                  <div className="card-body">
-                    <h4 className="titulos">{item.titulo_objetivos}</h4>
-                    <p className="card-text">{item.contenido_objetivos}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </>
-      </div>
       <Footer />
     </>
   );

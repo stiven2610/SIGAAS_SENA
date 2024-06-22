@@ -1,9 +1,9 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import BackIcon from "../backIcon/BackIcon";
 import FormularioRegistroAsistenciaTaller from "../formulario_registro_asistencia_taller/formulario_registro_asistencia_taller";
 import "./styles.css";
-import BackIcon from "../backIcon/BackIcon";
 
 const Asistencia_taller = () => {
   const location = useLocation();
@@ -38,9 +38,8 @@ const Asistencia_taller = () => {
   }, [codigo_taller]);
 
   return (
-    <div className="container_insert vh-100">
-      <p className="titulos text-center mt-3">{nombreTaller}</p>
-      <BackIcon />
+    <div className="container_registro_asis ">
+        <BackIcon />
 
       <div className="table_container_asistencia">
         <div>
@@ -77,7 +76,14 @@ const Asistencia_taller = () => {
                     <td>{item.numero_documento_aprendiz}</td>
                     <td>{item.nombre_completo_aprendiz}</td>
                     <td>{item.codigo_ficha}</td>
-                    <td>{item.fecha_insert}</td>
+                    <td>{new Date(item.fecha_insert).toLocaleDateString(
+                          "es-ES",
+                          {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                          }
+                        )}</td>
                   </tr>
                 ))
               )}

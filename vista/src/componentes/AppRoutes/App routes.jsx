@@ -1,32 +1,31 @@
 
-import { useEffect } from "react";
-import { useLocation, useNavigate, Route, Routes } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import Tabla_adjudicados from "../adjudicados/tabla_adjudicados";
 import Aprendices_cancelados from "../aprendicesCancelados/aprendices_cancelados";
+import Aprendices_meritorios from "../aprendices_meritorios/Aprendices_meritorios";
+import Suspendidos from "../aprendices_suspendidos/Aprendices_suspendidos";
 import Asistencia_taller from "../asistencia_taller/asistencia_taller";
 import Formulario_contacto from "../contactanos/formulario_contacto";
 import Formulario_create_beneficio from "../formulario_create_beneficio/formulario_create_beneficio";
 import Formulario_create_taller from "../formulario_create_taller/formulario_create_taller";
+import Insert_aprendiz from "../formulario_insert_aprendiz/formulario_insert_aprendiz";
 import Formulario_registro_asistencia_taller from "../formulario_registro_asistencia_taller/formulario_registro_asistencia_taller";
 import Inicio from "../index/index";
 import Login from "../login/Login";
+import Mensajes from "../mensajes/mensajes";
+import InactivityTimer from "../modalsesion/inactivity";
+import LayoutWithoutNav from "../nav_index/LayoutWithoutNav";
 import Nav_index from "../nav_index/nav_index";
 import Novedades_presentadas from "../novedades_presentadas/novedades_presentadas";
-import Registro_novedades_formato from "../registro_novedades_formato/registro_novedades_formato";
-import Tabla_adjudicados from "../adjudicados/tabla_adjudicados";
-import Talleres from "../talleres/Talleres";
-import Update_aprendiz from "../update_aprendiz/update_aprendiz";
-import PrivateRoute from "./PrivateRouter";
-import "./styles.css";
-import Aprendices_meritorios from "../aprendices_meritorios/Aprendices_meritorios";
-import Insert_aprendiz from "../formulario_insert_aprendiz/formulario_insert_aprendiz";
-import Suspendidos from "../aprendices_suspendidos/Aprendices_suspendidos";
-import LayoutWithoutNav from "../nav_index/LayoutWithoutNav";
-import { useContext } from "react";
-import { AuthContext } from "./Authcontext";
-import InactivityTimer from "../modalsesion/inactivity";
 import Equipo from "../parametros/equipo";
 import Parametros from "../parametros/parametros";
-import Mensajes from "../mensajes/mensajes";
+import Registro_novedades_formato from "../registro_novedades_formato/registro_novedades_formato";
+import Talleres from "../talleres/Talleres";
+import Update_aprendiz from "../update_aprendiz/update_aprendiz";
+import { AuthContext } from "./Authcontext";
+import PrivateRoute from "./PrivateRouter";
+import "./styles.css";
 const Approutes = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -45,8 +44,8 @@ const Approutes = () => {
       <Routes>
         <Route path="/" element={<Nav_index />}>
           <Route index element={<Inicio />} />
-          <Route path="login" element={<Login />} />
-          <Route path="contacto" element={<Formulario_contacto />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/contacto" element={<Formulario_contacto />} />
 
           <Route
             path="/adjudicados"

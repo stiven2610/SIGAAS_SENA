@@ -1,10 +1,9 @@
 
-import { useContext } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import { NavLink, Outlet } from "react-router-dom";
-import "./styles.css";
 import LongMenu from "../material/menu";
 import Modal_update from "../modal_instructor/modal_update";
+import "./styles.css";
 
 const Nav_instructor= () => {
 

@@ -1,17 +1,17 @@
 
-import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import * as React from 'react';
 import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../AppRoutes/Authcontext';
 const options = [
   'Cancelados',
   'Parametros',
-  'Cerrar sesión'
-
+  'Cerrar sesión',
+  'Nuevo beneficio'
 ];
 
 const ITEM_HEIGHT = 48;
@@ -40,8 +40,9 @@ navigate("/cancelados")
         navigate("/equipo")
             }else if (option === 'Información' ){
                 navigate("/informacion")
-                    }
-  };
+                    }else if (option === 'Nuevo beneficio' ){
+                      navigate("/creacionbeneficio")
+                          }};
 
   return (
     <div>

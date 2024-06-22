@@ -1,13 +1,14 @@
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import "./styles.css"
+import "./styles.css";
+
 const BackIcon = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate("/adjudicados"); // Navega hacia atrás en la historia
+    navigate(-1); // Navega hacia atrás en la historia del navegador
   };
 
   return (

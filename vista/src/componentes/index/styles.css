@@ -4,19 +4,31 @@
     object-fit: cover; /* Evita la distorsión, ajustando la imagen para cubrir el contenedor */
     vertical-align: middle; /* Alinea verticalmente las imágenes */
   }
-  html {
-    box-sizing: border-box; /* O content-box según tus preferencias */
+  .container-carousel {
+    width: 40em;
+    background: linear-gradient(to right, #f8f8f8, #ffffff);
   }
-
-
+  
+  .container-equipo {
+    width: 100%;
+    background: linear-gradient(to right, #ffffff, #f8f8f8);
+  
+  }
+  
+  .container-objetivos {
+    width: 100%;
+    background: linear-gradient(to right, #f8f8f8, #ffffff);
+  }
+  
+  .container-informacion {
+    width: 100%;
+    background: linear-gradient(to right, #ffffff, #f8f8f8);
+  }
+  
 .container-inicio{
-  margin: 3rem;
   display: flex;
   align-items: center;
   flex-direction: column;
   background: #f8f8f8;
 }
 
-  .container-carousel{
-    width: 50em;
-  }

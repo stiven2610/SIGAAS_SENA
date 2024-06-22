@@ -4,7 +4,7 @@ const Get_information = async (req, res) => {
   
     
     try {
-        const { rows } = await pool.query('SELECT  titulo, contenido from informacion ' );
+        const { rows } = await pool.query('SELECT id_informacion, titulo, contenido from informacion ' );
         
         
         res.json({ success: true, data: rows }); 

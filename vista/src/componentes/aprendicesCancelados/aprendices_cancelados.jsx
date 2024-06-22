@@ -1,15 +1,13 @@
 
 import { useEffect, useState } from "react";
-import "./styles.css";
 import BackIcon from "../backIcon/BackIcon";
-import Datos_aprendiz from "../formulario_insert_aprendiz/datos_aprendiz";
-import Datos_formacion from "../formulario_insert_aprendiz/datos_formacion";
+import "./styles.css";
 const Aprendices_cancelados = () => {
   const [datos, setDatos] = useState([]);
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:4000/cancelados")
+    fetch("http://  localhost:4000/cancelados")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {

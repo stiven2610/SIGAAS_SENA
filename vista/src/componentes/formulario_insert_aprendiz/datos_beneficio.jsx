@@ -1,14 +1,14 @@
 
-import React, { useState, useEffect } from "react";
-import Grid from "@mui/material/Grid";
 import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  TextField,
-  FormHelperText,
+    FormControl,
+    FormHelperText,
+    InputLabel,
+    MenuItem,
+    Select,
+    TextField,
 } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import React, { useEffect, useState } from "react";
 
 const Datos_beneficio = ({ handleChange, errors }) => {
   const [datos, setDatos] = useState([]);
@@ -32,7 +32,7 @@ const Datos_beneficio = ({ handleChange, errors }) => {
 
   return (
     <>
-      <p className="titulos text-center">Datos de beneficio</p>
+      <h4 className="text-center mt-3">Datos de beneficio</h4>
       <Grid container spacing={3}>
         <Grid item xs={12} md={4}>
           <FormControl fullWidth error={!!errors.id_obligacion_mensual}>

@@ -4,7 +4,7 @@ const createListener = require("pg-listen");
 const cron = require("node-cron");
 // Crea un listener de pg-listen
 const listener = createListener({
-  connectionString: "postgres://postgres:posgrest15@localhost:5432/apoyo",
+  connectionString: "postgres://postgres:posgrest15@localhost/apoyo",
 });
 
 // Manejador de notificaciones

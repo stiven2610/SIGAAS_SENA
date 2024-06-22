@@ -1,8 +1,8 @@
 
-import { useEffect, useState } from "react";
-import BackIcon from "../backIcon/BackIcon";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { IconButton, Tooltip } from "@mui/material";
+import { useEffect, useState } from "react";
+import BackIcon from "../backIcon/BackIcon";
 
 const Suspendidos = () => {
   const [datos, setDatos] = useState([]);

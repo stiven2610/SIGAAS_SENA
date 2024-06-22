@@ -8,7 +8,7 @@ const taskRoutes = require("./routes/tasks.routes.js")
 
 const app = express ();
 app.use(express.static('build'));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 conectarYEscuchar()
   .then(() => console.log('Conexión establecida. Escuchando notificaciones...'))

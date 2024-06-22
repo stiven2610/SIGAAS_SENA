@@ -1,5 +1,6 @@
 .btn_volver {
     display: flex;
+    min-width: 120px;
     max-width: 10%;
     align-items: center;
     margin: 10px;

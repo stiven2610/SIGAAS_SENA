@@ -1,24 +1,26 @@
 
-.error-container {
-    border: 2px solid red;
-    background-color: #ffebeb;
-  }
-  .container_beneficio{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .container_bene{
-    width: 35%;
-    text-align: center;
-    background: #f8f8f8;
-    padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 0 10px #9beb6e;
-margin-top: 1rem;
-  }
-  .titulo_beneficio{
-    color: #41be07;
-    font-weight: bold;
-  }
+.dividir{
+  width: 100%;
+  margin: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.contain-foto {
+  width: 50%;
+}
+.contain-foto img {
+  width: 60%;
+  
+}
+.container_beneficio{
+  width: 50%;
+display: flex;
+justify-content: flex-end;
+text-align: center;
+}
+.form_beneficio{
+  padding: 2rem;
+  background: #f8f8f8;
+  width: 80%;
+}

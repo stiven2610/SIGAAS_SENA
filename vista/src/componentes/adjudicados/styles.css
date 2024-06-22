@@ -1,31 +1,17 @@
-.container_adjudicados {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-}
-.adjudicados{
-    width: 95%;
-}
-.container_filtros {
-    width: 90%;
-    height: auto;
-    display: flex;
-    text-align: center;
-    align-items: center;
+.container_adjudicados{
     background: #f8f8f8;
-    padding: 1rem;
+    
 }
-.container_edicion{
-    width: auto;
+.container_adjudicados_table{
+    margin-right: 3rem;
+    margin-left: 3rem;
+
+}
+.container-busqueda{
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin: 1rem;
-    background: #f8f8f8;
-    padding: 3%;
-    border-radius: 0px 0px 20px 20px;
-    box-shadow: 0 0 10px #6ec8eb;
+    justify-content: space-between;
+    padding: 2rem;
+}
+.titulos{
+    color: #39a900;
 }

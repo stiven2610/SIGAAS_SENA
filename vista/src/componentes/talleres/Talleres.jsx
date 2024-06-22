@@ -1,10 +1,27 @@
-
 import { faEye, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import SearchIcon from "@mui/icons-material/Search";
+import {
+    Box,
+    Button,
+    CircularProgress,
+    Container,
+    IconButton,
+    InputAdornment,
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    TextField,
+    Tooltip
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackIcon from "../backIcon/BackIcon";
-import Boton from "../botones/Boton";
 import "./styles.css";
 
 const Talleres = () => {
@@ -44,84 +61,101 @@ const Talleres = () => {
   };
 
   return (
-    <div className="container_insert vh-100">
-      <div>
-      <p className="titulos">TALLERES MENSUALES</p>
-      <div  className="boton_talleres">
-        <div onClick={irCrearTaller}>
-        <Boton texto="Crear nuevo taller" color="#" />
+    <Container className="container_insert vh-100" maxWidth="lg">
+      <BackIcon />
 
-        </div>
-        <div className="container_busqueda">
-          <input
-            className="form-control m-2"
-            type="text"
+      <Box my={4}>
+
+        <h5 className="titulos text-center">
+          TALLERES MENSUALES
+        </h5>
+        <Box display="flex" justifyContent="space-between" mb={2}>
+          <Button
+            variant="contained"
+            
+            startIcon={<AddBoxIcon />}
+            onClick={irCrearTaller}
+          >
+            Crear nuevo taller
+          </Button>
+
+          <TextField
+            variant="outlined"
             placeholder="Buscar taller por nombre"
             value={busqueda}
             onChange={handleBusquedaChange}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
           />
-        </div>
 
-      </div>
-      <BackIcon/>
-
-      <div className="container_table_talleres">
-        <table className="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>GESTIÓN</th>
-              <th>Nombre de taller</th>
-              <th>Fecha de taller</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cargando ? (
-              <tr>
-                <td colSpan="4">Cargando Datos...</td>
-              </tr>
-            ) : (
-              talleres
-                .filter((taller) =>
-                  taller.nombre_taller
-                    .toLowerCase()
-                    .includes(busqueda.toLowerCase())
-                )
-                .map((item) => (
-                  <tr key={item.codigo_taller}>
-                    <td>
-                      <div className="container_icons_taller">
-                        <FontAwesomeIcon
-                          icon={faEye}
-                          style={{ cursor: "pointer" }}
-                          title="Ver asistencias"
-                          onClick={() =>
-                            handleClick(item.codigo_taller, item.nombre_taller)
+        </Box>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="talleres table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">GESTIÓN</TableCell>
+                <TableCell align="center">Nombre de taller</TableCell>
+                <TableCell align="center">Fecha de taller</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {cargando ? (
+                <TableRow>
+                  <TableCell colSpan="3" align="center">
+                    <CircularProgress />
+                  </TableCell>
+                </TableRow>
+              ) : (
+                talleres
+                  .filter((taller) =>
+                    taller.nombre_taller
+                      .toLowerCase()
+                      .includes(busqueda.toLowerCase())
+                  )
+                  .map((item) => (
+                    <TableRow key={item.codigo_taller}>
+                      <TableCell align="center">
+                        <Box display="flex" justifyContent="center">
+                          <Tooltip title="Ver asistencias">
+                            <IconButton
+                              onClick={() =>
+                                handleClick(item.codigo_taller, item.nombre_taller)
+                              }
+                            >
+                              <FontAwesomeIcon icon={faEye} />
+                            </IconButton>
+                          </Tooltip>
+                          <Tooltip title="Eliminar taller">
+                            <IconButton>
+                              <FontAwesomeIcon icon={faTrash} />
+                            </IconButton>
+                          </Tooltip>
+                        </Box>
+                      </TableCell>
+                      <TableCell align="center">{item.nombre_taller}</TableCell>
+                      <TableCell align="center">
+                        {new Date(item.fecha_taller).toLocaleDateString(
+                          "es-ES",
+                          {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
                           }
-                        />
-                        <FontAwesomeIcon
-                          icon={faTrash}
-                          title="Eliminar taller"
-                          style={{ cursor: "pointer" }}
-                        />
-                      </div>
-                    </td>
-                    <td>{item.nombre_taller}</td>
-                    <td>{new Date(item.fecha_taller).toLocaleDateString(
-                        "es-ES",
-                        {
-                          day: "2-digit",
-                          month: "2-digit",
-                          year: "numeric",
-                        }
-                      )}</td>
-                  </tr>
-                ))
-            )}
-          </tbody>
-        </table>
-      </div>
-      </div>
-      </div>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  ))
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    </Container>
   );
 };
 

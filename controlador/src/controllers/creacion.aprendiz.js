@@ -73,7 +73,7 @@ try {
 
   // Acceder a las variables booleanas por separado
   const { ficha_existe,instructor_existe, aprendiz_existe, insercion_realizada } = result.rows[0];
-  console.log(result.rows[0])
+  console.log(result.rows[0]);
   if (insercion_realizada) {
     if(!instructor_existe){
       send_credenciales_instructor(nombre_instructor_lider,contra_aleatoria,email_instructor,numero_documento_instructor_lider)

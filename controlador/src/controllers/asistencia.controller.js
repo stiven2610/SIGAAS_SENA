@@ -19,7 +19,7 @@ const formularioRegistroAsistencia = async (req, res, next) => {
     } else if (!documento_existe) {
       res.status(400).json({
         success: false,
-        error: "El número de documento del aprendiz no existe.",
+        error: "El aprendiz no se encuentra registrado en el apoyo",
       })
     } else if (!taller_existe) {
       res.status(400).json({

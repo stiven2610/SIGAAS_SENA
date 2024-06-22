@@ -44,7 +44,7 @@ const Insert_aprendiz = () => {
     nombre_instructor_lider: "",
     email_instructor: "",
   });
-
+console.log(formData)
   const handleChange = (e) => {
     const { name, value } = e.target;
 

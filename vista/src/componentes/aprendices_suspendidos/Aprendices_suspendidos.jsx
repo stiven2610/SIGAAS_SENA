@@ -34,7 +34,7 @@ const Suspendidos = () => {
       return; // Si el usuario cancela, no hacemos nada
     }
    
-    fetch(`http://  localhost:4000/reactivaraprendiz/${numero_documento_aprendiz}`, {
+    fetch(`http://localhost:4000/reactivaraprendiz/${numero_documento_aprendiz}`, {
       method: 'PUT', // Usa PUT o POST según el diseño de tu API
       headers: {
         'Content-Type': 'application/json',

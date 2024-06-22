@@ -58,7 +58,7 @@ const Formulario_create_taller = () => {
 
       if (response.ok) {
         alert("Taller creado exitosamente");
-        navigate('  /talleres');
+        navigate('/talleres');
       } else {
         setResult("Error en la solicitud");
         if (response.status === 400) {

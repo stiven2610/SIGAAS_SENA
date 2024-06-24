@@ -26,6 +26,8 @@ import Update_aprendiz from "../update_aprendiz/update_aprendiz";
 import { AuthContext } from "./Authcontext";
 import PrivateRoute from "./PrivateRouter";
 import "./styles.css";
+import Get_Formatos from "../formatos/formatos";
+import Ver_pdf from "../pdf_formato/pdf_formato";
 const Approutes = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -55,7 +57,22 @@ const Approutes = () => {
               </PrivateRoute>
             }
           />
-          
+          <Route
+            path="/formatos"
+            element={
+              <PrivateRoute>
+                <Get_Formatos />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/ver_formato"
+            element={
+              <PrivateRoute>
+                <Ver_pdf/>
+              </PrivateRoute>
+            }
+          />
           <Route
             path="/equipo"
             element={

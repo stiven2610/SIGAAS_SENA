@@ -162,7 +162,7 @@ const FormularioCreateBeneficio = () => {
         </div>
         <div className="contain-foto">
           <img
-            src="../../../public/images/Foto - Google Fotos_files/IMG_20240517_105802748_AE.jpg"
+            src="..//images/Foto - Google Fotos_files/IMG_20240517_105802748_AE.jpg"
             alt=""
           />
         </div>

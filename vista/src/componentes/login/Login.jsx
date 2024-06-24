@@ -25,7 +25,7 @@ const Login = () => {
     rol: "",
     contrasenha_usuario: "",
   });
-console.log(user)
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
@@ -47,14 +47,15 @@ console.log(user)
         },
         body: JSON.stringify(userWithEncryptedPassword),
       });
-console.log(userWithEncryptedPassword)
+
       if (res.ok) {
         const data = await res.json();
         if (data.success) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("numero_documento_usuario", user.numero_documento_usuario);
           login();
-          navigate(user.rol ? "/adjudicados" : "/registronovedad");
+          console.log(user.rol);
+          navigate(user.rol === "true" ? "/registronovedad" : "/adjudicados");
         } else {
           setErrorCredenciales("Credenciales incorrectas");
         }
@@ -70,7 +71,7 @@ console.log(userWithEncryptedPassword)
     <>
       <div className="container-login">
         <div className="container-foto">
-          <img src="../../../public/bienestar1.jpg" className="login-image" alt="Login" />
+          <img src="..//bienestar1.jpg" className="login-image" alt="Login" />
         </div>
         <div className="form-login">
           <div id="form-container" className={`form_login ${errorCredenciales ? "error-credenciales" : ""}`}>

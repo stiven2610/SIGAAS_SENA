@@ -76,7 +76,7 @@ const Formulario_create_taller = () => {
     <div className="container_creacion vh-100" maxWidth="md">
       <Box display="flex" alignItems="center" justifyContent="center" height="100%">
         <Box className="container-foto">
-          <img src="../../../public/images/IMG_20240409_151909058_HDR_AE.jpg" className="login-image" alt="Login" />
+          <img src="..//images/IMG_20240409_151909058_HDR_AE.jpg" className="login-image" alt="Login" />
         </Box>
         <Box className="container_crea_taller" ml={3}>
           <Paper elevation={3} sx={{ p: 3 }}>

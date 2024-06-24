@@ -78,7 +78,7 @@ const Formulario_contacto = () => {
     <>
       <div className="container-contactanos">
         <div className="contacto-foto">
-          <img src="../../../public/bienestar1.jpg" className="login-image" />
+          <img src="/bienestar1.jpg" className="login-image" />
         </div>
         <div className="container_form-contacto">
         <form className="contain-contact" onSubmit={handleSubmit}>

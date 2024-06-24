@@ -44,7 +44,9 @@ const Insert_aprendiz = () => {
     nombre_instructor_lider: "",
     email_instructor: "",
   });
-console.log(formData)
+
+  console.log(formData);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -133,11 +135,14 @@ console.log(formData)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (Object.values(errors).some((error) => error)) {
+    const allFieldsFilled = Object.values(formData).every(
+      (field) => field !== ""
+    );
+    if (!allFieldsFilled || Object.values(errors).some((error) => error)) {
       alert(
         "Por favor, verifique los datos ingresados antes de enviar el formulario."
       );
-      return; // Detener el envío del formulario si hay errores
+      return; // Detener el envío del formulario si hay errores o campos vacíos
     }
     try {
       const res = await fetch("http://localhost:4000/insertaraprendiz", {
@@ -161,15 +166,12 @@ console.log(formData)
 
   return (
     <>
-      <div  style={{
-         background:"#dfdada"
-          }} >
+      <div style={{ background: "#dfdada" }}>
         <div
-        
           className="insert_aprendiz"
           style={{
             margin: "auto",
-            background:"#f8f8f8",
+            background: "#f8f8f8",
             maxWidth: "1200px",
             padding: "20px",
             border: "1px solid #ccc",
@@ -177,18 +179,21 @@ console.log(formData)
             boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.1)",
           }}
         >
-      <h3 className="titulos mt-3">Adjudicar nuevo aprendiz</h3>
+          <h3 className="titulos mt-3">Adjudicar nuevo aprendiz</h3>
 
           <form
             className="container"
             onSubmit={handleSubmit}
             autoComplete="off"
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+              }
+            }}
           >
             <BackIcon />
             <Datos_aprendiz handleChange={handleChange} errors={errors} />
-            <h4 className="mt-3 text-center" >
-              Datos de Formación
-            </h4>
+            <h4 className="mt-3 text-center">Datos de Formación</h4>
             <Grid container spacing={3}>
               <Grid item xs={12} md={4}>
                 <TextField
@@ -402,12 +407,8 @@ console.log(formData)
               </Grid>
             </Grid>
             <Datos_beneficio handleChange={handleChange} errors={errors} />
-            <Grid
-              container
-              justifyContent="center"
-              style={{ marginTop: "20px" }}
-            >
-              <Button type="submit" variant="contained" onClick={handleSubmit}>
+            <Grid container justifyContent="center" style={{ marginTop: "20px" }}>
+              <Button type="submit" variant="contained">
                 Enviar
               </Button>
             </Grid>

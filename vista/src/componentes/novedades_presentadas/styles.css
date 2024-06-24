@@ -1,11 +1,14 @@
 .container-novedades{
     width: 100%;
     height: auto;
+    padding: 4rem;
 }
 .container-titulo{
     margin-top: 2rem;
 }
-
+.container_barra {
+    width: 20%;
+}
 .container-boton{
     display: flex;
     flex-direction: column;

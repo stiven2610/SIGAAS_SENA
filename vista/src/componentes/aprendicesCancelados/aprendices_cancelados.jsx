@@ -7,7 +7,7 @@ const Aprendices_cancelados = () => {
   const [cargando, setCargando] = useState(true);
 
   useEffect(() => {
-    fetch("http://  localhost:4000/cancelados")
+    fetch("http://localhost:4000/cancelados")
       .then((response) => response.json())
       .then((data) => {
         if (data.data && Array.isArray(data.data)) {

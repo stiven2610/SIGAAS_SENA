@@ -13,7 +13,7 @@ const Nav_instructor= () => {
         <div className="header-container">
           <div className="logo-container">
             <img
-              src="../../../public/images/logobienestar.png"
+              src="..//images/logobienestar.png"
               alt="logo del Sena"
             />
           </div>

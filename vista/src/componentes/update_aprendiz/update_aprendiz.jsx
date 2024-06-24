@@ -85,7 +85,7 @@ const Update_aprendiz = ({ aprendiz }) => {
       console.log("Error:", error);
     }
   };
-
+console.log(formData.id_obligacion_mensual)
   return (
     <Container maxWidth="md">
       <Paper elevation={3} sx={{ padding: 3, marginTop: 3 }}>
@@ -251,7 +251,7 @@ const Update_aprendiz = ({ aprendiz }) => {
                 <MenuItem value="2">Plan de Actividades</MenuItem>
               </TextField>
             </Grid>
-            {formData.id_estado_aprendiz === "2" && (
+            {formData.id_estado_aprendiz === 2 && (
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
@@ -265,8 +265,11 @@ const Update_aprendiz = ({ aprendiz }) => {
                   helperText={errors.modalidad_productiva}
                 >
                   
-                  <MenuItem value="true">Taller Mensual</MenuItem>
-                  <MenuItem value="false">Plan de Actividades</MenuItem>
+                  <MenuItem value= "1">Proyecto productivo</MenuItem>
+                  <MenuItem value="2">Contrato de aprendizaje</MenuItem>
+                  <MenuItem value="3">Contrato laboral</MenuItem>
+                  <MenuItem value="4">Pasantia</MenuItem>
+                  <MenuItem value="4">Servicio militar</MenuItem>
                 </TextField>
               </Grid>
             )}

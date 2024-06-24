@@ -15,7 +15,7 @@ const Nav_index = () => {
         <div className="header-container">
           <div className="logo-container">
             <img
-              src="../../../public/images/logobienestar.png"
+              src="..//images/logobienestar.png"
               alt="logo del Sena"
             />
             <h3 className="m-2">SIGAAS</h3>
@@ -44,6 +44,15 @@ const Nav_index = () => {
                     }
                   >
                     Novedades
+                  </Nav.Link>
+                  <Nav.Link
+                    as={NavLink}
+                    to="/formatos"
+                    className={({ isActive }) =>
+                      isActive ? "link-nav active" : "link-nav"
+                    }
+                  >
+                    Formatos 
                   </Nav.Link>
                   <Nav.Link
                     as={NavLink}
@@ -91,7 +100,7 @@ const Nav_index = () => {
         <div className="container-nav">
           <div className="logo-container">
             <img
-              src="../../../public/images/logobienestar.png"
+              src="..//images/logobienestar.png"
               alt="logo del Sena"
             />
           </div>

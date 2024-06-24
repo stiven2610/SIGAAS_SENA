@@ -82,28 +82,28 @@ const Inicio = () => {
                 <Carousel.Item>
                   <img
                     className="img-carousel"
-                    src="../../../public/images/IMG_20240524_155518852_AE.jpg"
+                    src="..//images/IMG_20240524_155518852_AE.jpg"
                     alt="Imagen 1"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
                     className="img-carousel"
-                    src="../../../public/images/IMG_20240430_171151646_AE.jpg"
+                    src="..//images/IMG_20240430_171151646_AE.jpg"
                     alt="Imagen 2"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
                     className="img-carousel"
-                    src="../../../public/images/IMG_20240214_164502930_AE.jpg"
+                    src="..//images/IMG_20240214_164502930_AE.jpg"
                     alt="Imagen 2"
                   />
                 </Carousel.Item>
                 <Carousel.Item>
                   <img
                     className="img-carousel"
-                    src="../../../public/images/SAVE_20230929_173601.jpg"
+                    src="..//images/SAVE_20230929_173601.jpg"
                     alt="Imagen 2"
                   />
                 </Carousel.Item>

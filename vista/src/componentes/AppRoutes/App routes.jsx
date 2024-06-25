@@ -66,11 +66,9 @@ const Approutes = () => {
             }
           />
           <Route
-            path="/ver_formato"
+            path="/ver_formato/:id_formato_registrado"
             element={
-              <PrivateRoute>
                 <Ver_pdf/>
-              </PrivateRoute>
             }
           />
           <Route

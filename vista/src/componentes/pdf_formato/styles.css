@@ -1,31 +1,58 @@
-.encabezado{
+.encabezado {
     margin: 2rem;
     border: 1px solid black;
-
-}
-
-.nombre_formato{
+  }
+  
+  .nombre_formato {
     border-right: 1px solid black;
-    border-left:1px solid black ;
-}
-
-.informacion_formato{
+    border-left: 1px solid black;
+  }
+  
+  .informacion_formato {
     border-top: 1px solid black;
-}
-.container_informacion{
-
-}
-.datos{
+  }
+  
+  .container_informacion {}
+  
+  .datos {
     border: 1px solid black;
     width: 93%;
-}
-.datos_label{
+  }
+  
+  .datos_label {
     width: 100%;
     border-bottom: 1px solid black;
-}
-.datos_label_ficha{
+  }
+  
+  .datos_label_ficha {
     display: flex;
-}
-.fecha{
+  }
+  
+  .fecha {
     border-top: 1px solid black;
-}
+  }
+  
+  .tabla_evaluacion {
+    width: 93%;
+  }
+  
+  .evaluation-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+  }
+  
+  .evaluation-table th,
+  .evaluation-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .footer {
+    text-align: left;
+    display: flex;
+    margin-top: 20px;
+    padding-top: 10px;
+  }
+  

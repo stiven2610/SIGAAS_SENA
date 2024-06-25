@@ -1,7 +1,17 @@
 import { Grid, Paper, Typography } from "@mui/material";
 import { Document, Page, Text, View, Image } from "@react-pdf/renderer";
 import "./styles.css";
-const Ver_pdf = () => {
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+const Ver_pdf = ({item}) => {
+  console.log(item)
+  const { id_formato_registrado } = useParams();
+
+  useEffect(() => {
+    console.log("ID del formato registrado:", id_formato_registrado);
+    // Aquí puedes hacer la lógica para obtener y mostrar el PDF usando el id_formato_registrado
+    // Por ejemplo, podrías hacer una solicitud para obtener los datos del PDF
+  }, [id_formato_registrado]);
   return (
     <Document>
       <Page
@@ -63,6 +73,175 @@ const Ver_pdf = () => {
               <label htmlFor="">Area donde desarolla la actividad:</label>
               <label htmlFor=""></label>
             </div>
+          </div>
+        </div>
+        <div className="tabla_evaluacion">
+          <p>1.Espacio destinado para diligenciar el instructor (a)</p>
+
+          <table className="evaluation-table">
+            <thead>
+              <tr>
+                <th>EVALUACIÓN DEL APRENDIZ</th>
+                <th>SI</th>
+                <th>NO</th>
+                <th>OBSERVACIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  El aprendiz cumple con las actividades correspondientes de su
+                  formación
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  El aprendiz presenta a tiempo sus evidencias de su aprendizaje
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>El aprendiz ha asistido a comité académico</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>El aprendiz ha tenido llamados de atención</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="footer">
+            <p className="p-2">
+              Firma Instructor: ________________________________________________
+            </p>
+            <p className="p-2">
+              Nombre Instructor: __________________________________________
+            </p>
+          </div>
+        </div>
+        <div className="tabla_evaluacion">
+          <p>2 -Espacio destinado para Servidor Público encargado del área:</p>
+          <p>
+            NOTA: Si el aprendiz asiste a talleres programados por el área de
+            Bienestar al Aprendiz. Favor no diligenciar este espacio
+          </p>
+          <table className="evaluation-table">
+            <thead>
+              <tr>
+                <th>EVALUACIÓN DEL APRENDIZ</th>
+                <th>SI</th>
+                <th>NO</th>
+                <th>OBSERVACIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  El aprendiz cumple con las competencias actitudinales, como
+                  disciplina, responsabilidad, <br />
+                  puntualidad y honestidad enel desarrollo de su actividad como
+                  gestor monitor.
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  El aprendiz cumple con el desempeño técnico requerido en el
+                  desarrollo de la actividad <br />
+                  como gestor monitor.
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  El aprendiz ha presentado llamados de atención en el
+                  desarrollo de su actividad como gestor monitor.
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="footer">
+            <p className="p-2">
+              Nombre del servidor público:
+              ________________________________________________
+            </p>
+            <p className="p-2">
+              Firma del servidor público:
+              __________________________________________
+            </p>
+          </div>
+        </div>
+        <div className="tabla_evaluacion">
+          <p>
+            3 -Espacio destinado para aprendices que se encuentren en Etapa
+            Productiva desarrollando su modalidad de: (Proyecto Productivo).
+          </p>
+
+          <table className="evaluation-table">
+            <thead>
+              <tr>
+                <th>EVALUACIÓN DEL APRENDIZ</th>
+                <th>SI</th>
+                <th>NO</th>
+                <th>OBSERVACIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  El aprendiz cumple con las competencias actitudinales, y
+                  comportamentales correspondientes a la <br />
+                  Etapa Productiva (Proyecto Productivo).
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  El aprendiz cumple con el desempeño técnico requerido en el
+                  desarrollo del Proyecto Productivo.
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  El aprendiz ha presentado llamados de atención en el
+                  desarrollo de la Etapa Productiva (Proyecto Productivo).
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="footer">
+            <p className="p-2">
+              Nombre del servidor público: <br /> unidad de emprendimiento
+              ________________________________________________
+            </p>
+            <p className="p-2">
+              Firma del servidor público: <br />unidad de emprendimiento
+              __________________________________________
+            </p>
           </div>
         </div>
       </Page>

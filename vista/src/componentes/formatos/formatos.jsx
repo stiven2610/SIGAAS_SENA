@@ -1,14 +1,15 @@
-
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import { IconButton, Tooltip } from "@mui/material";
 import { useEffect, useState } from "react";
 import BackIcon from "../backIcon/BackIcon";
 import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 import { useNavigate } from "react-router-dom";
+
 const Get_Formatos = () => {
   const [datos, setDatos] = useState([]);
   const [cargando, setCargando] = useState(true);
-const navigate = useNavigate()
+  const navigate = useNavigate();
+
   const fetchFormatos = () => {
     setCargando(true);
     fetch("http://localhost:4000/get_formatos")
@@ -32,6 +33,11 @@ const navigate = useNavigate()
     fetchFormatos();
   }, []);
 
+  const handlePdfClick = (item) => {
+    const pdfUrl = `/ver_formato/${item.id_formato_registrado}`;  // Construir la URL con el ID del formato
+    window.open(pdfUrl, "_blank");  // Abrir en una nueva pestaña
+  };
+
   return (
     <>
       <div className="container_insert vh-100">
@@ -49,8 +55,8 @@ const navigate = useNavigate()
                   <th>Número de Documento</th>
                   <th>Instructor</th>
                   <th>Número de documento</th>
-                  <th>Correó instructor</th>
-                  <th>Acciones </th>
+                  <th>Correo instructor</th>
+                  <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
@@ -60,24 +66,22 @@ const navigate = useNavigate()
                   </tr>
                 ) : (
                   datos.map((item) => (
-                    <tr key={item.numero_documento_aprendiz}>
+                    <tr key={item.id_formato_registrado}>
                       <td>{item.nombre_completo_aprendiz}</td>
-                      <td> {new Date(
-                          item.fecha_formato
-                        ).toLocaleDateString("es-ES", {
-                          day: "2-digit",
-                          month: "2-digit",
-                          year: "numeric",
-                        })}</td>
+                      <td>{new Date(item.fecha_formato).toLocaleDateString("es-ES", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                      })}</td>
                       <td>{item.codigo_ficha}</td>
                       <td>{item.nombre_documento}</td>
                       <td>{item.numero_documento_aprendiz}</td>
                       <td>{item.nombre_instructor_lider}</td>
-                      <td>{item.nombre_documento_instructor}</td>
-                      <td>{item.email_instructor}</td>
+                      <td>{item.numero_documento_instructor_lider}</td>
+                      <td>{item.email_instructor_lider}</td>
                       <td>
                         <Tooltip title="Generar formato">
-                          <IconButton onClick={() => navigate("/ver_formato")}>
+                          <IconButton onClick={() => handlePdfClick(item)}>
                             <PictureAsPdfIcon />
                           </IconButton>
                         </Tooltip>
@@ -93,5 +97,6 @@ const navigate = useNavigate()
     </>
   );
 };
+
 
 export default Get_Formatos;

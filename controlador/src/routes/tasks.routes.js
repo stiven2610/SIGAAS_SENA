@@ -42,9 +42,12 @@ const { Get_equipo, create_persona, upload } = require("../controllers/equipo.js
 const { Reactivar_aprendiz } = require("../controllers/reactivar_aprendiz.js");
 const { get_mensajes, create_mensaje } = require("../controllers/mensajes.js");
 const get_item = require("../controllers/items.formato.js");
+const { registrar_formato } = require("../controllers/registro_formato.js");
+const {get_formatos,Get_formato_pdf} = require("../controllers/formatos.js");
 //rutas para CRUD de usuario...
 router.get("/get_documentos", Get_documentos);
 router.get("/get_ficha/:codigo_ficha",Get_ficha)
+router.get("/get_formato_pdf/:id_formato_registrado",Get_formato_pdf)
 router.get("/get_estados", Get_estados_aprendiz);
 router.get("/get_motivos_suspension" , get_motivos_suspension)
 router.post("/insert_suspendido",insert_suspendido)
@@ -56,6 +59,7 @@ router.delete("/usuario/:id", deleteUsuario);
 router.put("/usuario/:id", updateUsuario);
 router.put("/reactivaraprendiz/:numero_documento_aprendiz", Reactivar_aprendiz);
 router.get("/get_mensajes",get_mensajes);
+router.get("/get_formatos",get_formatos);
 router.post("/create_mensaje",create_mensaje);
 router.get("/get_information",Get_information)
 router.get("/get_objetivos",Get_objetivos);
@@ -80,4 +84,5 @@ router.get("/talleres", get_talleres);
 router.post("/updateestado", update_estado);
 router.get("/getestadoaprendiz", get_estado_aprendiz);
 router.post("/insertaraprendiz", insert_aprendiz);
+router.post("/registroformato",registrar_formato)
 module.exports = router;

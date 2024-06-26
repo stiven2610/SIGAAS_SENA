@@ -55,4 +55,10 @@
     margin-top: 20px;
     padding-top: 10px;
   }
-  
+  .firma_section{
+    display: flex;
+    justify-content: space-around;
+  }
+  .firma_label{
+    width: 40%;
+  }

@@ -1,7 +1,11 @@
 .padre {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
+}
+.busqueda_nov{
+    width: 40%;
 }
 .container_novedades{
     border-radius: 20px;

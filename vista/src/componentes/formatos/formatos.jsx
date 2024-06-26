@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const Get_Formatos = () => {
   const [datos, setDatos] = useState([]);
   const [cargando, setCargando] = useState(true);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
 
   const fetchFormatos = () => {
     setCargando(true);

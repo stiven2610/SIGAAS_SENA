@@ -28,6 +28,7 @@ import PrivateRoute from "./PrivateRouter";
 import "./styles.css";
 import Get_Formatos from "../formatos/formatos";
 import Ver_pdf from "../pdf_formato/pdf_formato";
+import Meritorios from "../aprendices_meritorios/Aprendices_meritorios";
 const Approutes = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ const Approutes = () => {
     if (location.pathname === "/login") {
       logout(); // Llamar a la función de logout del contexto
       localStorage.removeItem("token"); // Eliminar el token de localStorage
+      localStorage.removeItem("numero_documento_usuario")
       navigate("/login", { replace: true }); // Redirigir al usuario a /login
     }
   }, [location.pathname, logout, navigate]);
@@ -62,6 +64,14 @@ const Approutes = () => {
             element={
               <PrivateRoute>
                 <Get_Formatos />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/meritorios"
+            element={
+              <PrivateRoute>
+                <Meritorios />
               </PrivateRoute>
             }
           />

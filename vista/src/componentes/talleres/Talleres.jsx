@@ -130,11 +130,7 @@ const Talleres = () => {
                               <FontAwesomeIcon icon={faEye} />
                             </IconButton>
                           </Tooltip>
-                          <Tooltip title="Eliminar taller">
-                            <IconButton>
-                              <FontAwesomeIcon icon={faTrash} />
-                            </IconButton>
-                          </Tooltip>
+                         
                         </Box>
                       </TableCell>
                       <TableCell align="center">{item.nombre_taller}</TableCell>

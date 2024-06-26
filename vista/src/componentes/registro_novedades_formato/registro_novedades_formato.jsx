@@ -1,9 +1,8 @@
-import { TextField } from "@mui/material";
+import { TextField, Radio, Button } from "@mui/material";
 import { useEffect, useState } from "react";
-import Boton from "../botones/Boton";
-import Nav_instructor from "../nav_index/nav_instructor";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./styles.css";
+import Nav_instructor from "../nav_index/nav_instructor";
 
 const RegistroNovedadesFormato = () => {
   const [datos, setDatos] = useState([]);
@@ -14,7 +13,8 @@ const RegistroNovedadesFormato = () => {
   const [itemsEstado, setItemsEstado] = useState({});
   const [observaciones, setObservaciones] = useState({});
   const [areaActividad, setAreaActividad] = useState("");
-const navigate = useNavigate()
+  const navigate = useNavigate();
+
   useEffect(() => {
     fetch("http://localhost:4000/adjudicados")
       .then((response) => response.json())
@@ -82,13 +82,23 @@ const navigate = useNavigate()
     setAreaActividad(e.target.value);
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!aprendizSeleccionado) return;
 
+    const allItemsChecked = Object.values(itemsEstado).length === item.filter(
+      (i) => i.id_obligacion_mensual === aprendizSeleccionado.id_obligacion_mensual
+    ).length;
+
+    if (!areaActividad || !allItemsChecked) {
+      alert("Debe completar el área de actividad y seleccionar una opción en todos los ítems.");
+      return;
+    }
+
+    const numeroDocumentoUsuario = localStorage.getItem("numero_documento_usuario");
     const payload = {
       numero_documento_aprendiz: aprendizSeleccionado.numero_documento_aprendiz,
-      numero_documento_instructor_lider: "1235467", // Cambia esto según sea necesario
+      numero_documento_instructor_lider: numeroDocumentoUsuario, // Cambia esto según sea necesario
       codigo_ficha: aprendizSeleccionado.codigo_ficha,
       id_obligacion_mensual: aprendizSeleccionado.id_obligacion_mensual,
       area_actividad: areaActividad,
@@ -117,8 +127,8 @@ const navigate = useNavigate()
         throw new Error("Error al enviar el formulario");
       } else {
         alert("Formato registrado correctamente");
-        navigate("/registronovedad")
-        setFiltroBusqueda("")
+        navigate("/registronovedad");
+        setFiltroBusqueda("");
       }
     } catch (error) {
       console.log("Error:", error);
@@ -135,7 +145,7 @@ const navigate = useNavigate()
     return (
       <form onSubmit={handleSubmit}>
         <p className="titulos">{`Aprendiz realizando ${aprendizSeleccionado.nombre_obligacion_mensual}`}</p>
-        <table className="table table-bordered">
+        <table className="table table-bordered" style={{ margin: '0 auto' }}>
           <thead>
             <tr className="encabezado">
               <th>Evaluación del aprendiz</th>
@@ -149,21 +159,21 @@ const navigate = useNavigate()
               <tr key={index}>
                 <td>{item.item}</td>
                 <td>
-                  <input
-                    type="radio"
-                    name={`item_${index}`}
-                    value="true"
+                  <Radio
                     checked={itemsEstado[index] === true}
                     onChange={() => handleItemChange(index, true)}
+                    value="true"
+                    name={`item_${index}`}
+                    inputProps={{ 'aria-label': 'Sí' }}
                   />
                 </td>
                 <td>
-                  <input
-                    type="radio"
-                    name={`item_${index}`}
-                    value="false"
+                  <Radio
                     checked={itemsEstado[index] === false}
                     onChange={() => handleItemChange(index, false)}
+                    value="false"
+                    name={`item_${index}`}
+                    inputProps={{ 'aria-label': 'No' }}
                   />
                 </td>
                 <td>
@@ -178,18 +188,20 @@ const navigate = useNavigate()
             ))}
           </tbody>
         </table>
-        <div className="form-group">
-          <label htmlFor="areaActividad">Área de Actividad:</label>
-          <input
-            type="text"
+        <div className="form-group m-2">
+          <TextField
             id="areaActividad"
-            className="form-control"
+            label="Área de Actividad"
             value={areaActividad}
             onChange={handleAreaActividadChange}
+            fullWidth
+            required
           />
         </div>
         <div className="boton_novedad">
-          <Boton texto="Registrar" color="#41be07" />
+          <Button type="submit" variant="contained" color="primary">
+            Registrar
+          </Button>
         </div>
       </form>
     );
@@ -202,81 +214,57 @@ const navigate = useNavigate()
         <p className="titulos text-center mt-4">
           REGISTRO DE FORMATO DE SEGUIMIENTO MENSUAL
         </p>
-        <table className="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>Nombre Completo del Aprendiz</th>
-              <th>Tipo de Documento</th>
-              <th>Número de Documento</th>
-              <th>Estado de Aprendiz</th>
-              <th>Obligación Mensual</th>
-              <th>Código de Ficha</th>
-              <th>Modalidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            {cargando ? (
+        <div className="table-responsive" style={{ display: 'flex', justifyContent: 'center' }}>
+          <table className="table table-bordered table-striped">
+            <thead>
               <tr>
-                <td colSpan="7">Cargando datos...</td>
+                <th>Nombre Completo del Aprendiz</th>
+                <th>Tipo de Documento</th>
+                <th>Número de Documento</th>
+                <th>Estado de Aprendiz</th>
+                <th>Obligación Mensual</th>
+                <th>Código de Ficha</th>
+                <th>Modalidad</th>
               </tr>
-            ) : (
-              aprendizSeleccionado && (
-                <tr key={aprendizSeleccionado.numero_documento_aprendiz}>
-                  <td>{aprendizSeleccionado.nombre_completo_aprendiz}</td>
-                  <td>{aprendizSeleccionado.nombre_documento}</td>
-                  <td>{aprendizSeleccionado.numero_documento_aprendiz}</td>
-                  <td>{aprendizSeleccionado.nombre_estado_aprendiz}</td>
-                  <td>{aprendizSeleccionado.nombre_obligacion_mensual}</td>
-                  <td>{aprendizSeleccionado.codigo_ficha}</td>
-                  <td>{aprendizSeleccionado.nombre_modalidad}</td>
+            </thead>
+            <tbody>
+              {cargando ? (
+                <tr>
+                  <td colSpan="7">Cargando datos...</td>
                 </tr>
-              )
-            )}
-          </tbody>
-        </table>
+              ) : (
+                aprendizSeleccionado && (
+                  <tr key={aprendizSeleccionado.numero_documento_aprendiz}>
+                    <td>{aprendizSeleccionado.nombre_completo_aprendiz}</td>
+                    <td>{aprendizSeleccionado.nombre_documento}</td>
+                    <td>{aprendizSeleccionado.numero_documento_aprendiz}</td>
+                    <td>{aprendizSeleccionado.nombre_estado_aprendiz}</td>
+                    <td>{aprendizSeleccionado.nombre_obligacion_mensual}</td>
+                    <td>{aprendizSeleccionado.codigo_ficha}</td>
+                    <td>{aprendizSeleccionado.nombre_modalidad}</td>
+                  </tr>
+                )
+              )}
+            </tbody>
+          </table>
+        </div>
         <div className="container_novedades col-md-8">
           <div className="form-group mb-2 text-center">
-            <div className="input-group">
-              <input
-                type="text"
+            <div className="busqueda_nov input-group ">
+              <TextField
                 id="busqueda"
-                className="form-control m-1"
+                label="Buscar"
                 value={filtroBusqueda}
                 onChange={handleBusquedaChange}
+                fullWidth
               />
-              <div className="input-group-append">
-                <button className="btn btn-outline-secondary" type="button">
-                  Buscar
-                </button>
-              </div>
             </div>
           </div>
           {renderFormulario()}
         </div>
       </div>
     </>
-  );
+);
 };
 
 export default RegistroNovedadesFormato;
-/*
-"SELECT a.numero_documento_aprendiz ,
-a.numero_documento_instructor_lider ,
-    a.codigo_ficha ,
-    a.area_actividad ,
-    b.item_uno ,
-    b.item_dos ,
-    b.item_tres ,
-    b.item_cuatro ,
-	b.observacion_uno ,
-	b.observacion_dos ,
-	b.observacion_tres ,
-	b.observacion_cuatro ,
-  c.nombre_completo_instructor_lider,
-  d.nombre_completo_aprendiz,
-  a.fecha_registro  FROM formato_registrado AS a, apartado_taller_mensual
-    AS b, aprendiz AS D, instructor_lider AS C
-    
-    WHERE a.numero_documento_aprendiz  = d.nombre_completo_aprendiz 
-     AND a.numero_documento_aprendiz  = b.numero_documento_aprendiz
-     AND a.numero_documento_instructor_lider = c.numero_documento_instructor_lider  ORDER BY a.fecha_registro DESC"*/

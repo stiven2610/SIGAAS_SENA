@@ -27,7 +27,7 @@ try {
           modalidad_productiva
       ]
   );
-
+console.log(req.body)
   const exito = update_aprendiz.rows[0].fun_act_apr; 
   if (exito == true) {
       res.status(200).json({
